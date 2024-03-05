@@ -10,14 +10,12 @@
   <body>
     <main>
       <section>
-        <img style="width:100px" src="../img/calender_logo.png" alt="로고" />
-        <input type="text" placeholder="아이디" />
-        <input type="password" placeholder="비밀번호" />
-        <input type="submit" value="로그인" />
-        <a href="">아이디를 잊으셨나요?</a>
-        <a href="">비밀번호를 잊으셨나요?</a>
+        <h3>김태형</h3>
+        <h3>15:00 - 16:00</h3>
+        <h3>부산 출장</h3>
         <hr>
-        <button href="">새 계정 만들기</button>
+        <input type="submit" value="수정" />
+        <input type="submit" value="삭제" />
       </section>
     </main>
   </body>
