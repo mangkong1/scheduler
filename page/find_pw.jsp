@@ -11,10 +11,11 @@
     <main>
       <section>
         <h1>비밀번호 찾기</h1>
-        <input type="text" placeholder="아이디" />
-        <input type="text" placeholder="이메일" />
-        <input type="submit" value="비밀번호 찾기" />
+        <input id="id_box" type="text" placeholder="아이디" />
+        <input id="email_box" type="text" placeholder="이메일" />
+        <input id="find_pw_btn" type="submit" value="비밀번호 찾기" />
       </section>
     </main>
+    <script src="../event/find_pw.js"></script>
   </body>
 </html>

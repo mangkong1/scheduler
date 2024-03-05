@@ -26,8 +26,10 @@ const arr = [
 ];
 
 // idValue와 pwValue를 전역변수로 외부에서 선언할 때 작동안함...왜?
+// 만약 전역변수로 선언한다면 html이 처음 실행될 때 값이 지정되므로
+// 빈 값으로 나온다 (console.log하면 금방 알 수 있었음!)
 // find 메서드를 이용해 콜백함수를 각 요소에 대해 실행하고 조건이 맞으면 true 반환
-document.querySelector("#move_scheduler").addEventListener("click", () => {
+document.querySelector("#login_btn").addEventListener("click", () => {
   const idValue = document.querySelector("#id_box").value;
   const pwValue = document.querySelector("#pw_box").value;
   const user = arr.find((user) => user.id === idValue && user.pw === pwValue);

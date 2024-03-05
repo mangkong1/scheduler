@@ -11,10 +11,11 @@
     <main>
       <section>
         <h1>아이디 찾기</h1>
-        <input type="text" placeholder="이름" />
-        <input type="text" placeholder="이메일" />
-        <input type="submit" value="아이디 찾기" />
+        <input id="name_box" type="text" placeholder="이름" />
+        <input id="email_box" type="text" placeholder="이메일" />
+        <input id="find_id_btn" type="submit" value="아이디 찾기" />
       </section>
     </main>
+    <script src="../event/find_id.js"></script>
   </body>
 </html>
