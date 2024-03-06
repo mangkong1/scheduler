@@ -22,6 +22,7 @@
         <input id="email_check" type="submit" value="중복확인" />
         <select id="part_select">
           <%-- selected disabled hidden에서 필요한 속성만 꺼냄 --%>
+          <%-- selected면 아무것도 선택 안했을 때 부서가 선택되는 문제 --%>
           <option selected disabled>부서</option>
           <option>기획팀</option>
           <option>디자인팀</option>

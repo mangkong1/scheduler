@@ -17,7 +17,7 @@
         <input type="text" placeholder="종료시간 ex) 17:00" />
         <input type="text" placeholder="일정 내용" />
         <input type="submit" value="등록" />
-        <button href="">취소</button>
+        <button id="close_btn">취소</button>
       </section>
     </main>
   </body>
