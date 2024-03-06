@@ -1,27 +1,27 @@
-const arr = [
+let arr = [
   {
     id: "xogud1111",
     pw: "1234",
     name: "name1111",
     email: "xogud1111@gmail.com",
-    deaprtment: "planning",
-    rank: "manager",
+    deaprtment: "기획팀",
+    rank: "팀장",
   },
   {
     id: "xogud2222",
     pw: "1234",
     name: "name2222",
     email: "xogud2222@gmail.com",
-    deaprtment: "planning",
-    rank: "member",
+    deaprtment: "기획팀",
+    rank: "팀원",
   },
   {
     id: "xogud3333",
     pw: "1234",
     name: "name3333",
     email: "xogud3333@gmail.com",
-    deaprtment: "design",
-    rank: "manager",
+    deaprtment: "디자인팀",
+    rank: "팀장",
   },
 ];
 
@@ -77,4 +77,26 @@ document.querySelector("#email_check").addEventListener("click", () => {
     document.querySelector("#email_box").disabled = true;
     document.querySelector("#email_check").disabled = true;
   }
+});
+
+document.querySelector("#signup_btn").addEventListener("click", () => {
+  const idValue = document.querySelector("#id_box").value;
+  const pwValue = document.querySelector("#pw_box").value;
+  const nameValue = document.querySelector("#name_box").value;
+  const emailValue = document.querySelector("#email_box").value;
+  const partValue = document.querySelector("#part_select").value;
+  const rankValue = document.querySelector("#rank_select").value;
+
+  // 새로운 객체 생성 후 arr 배열에 추가
+  arr.push({
+    id: idValue,
+    pw: pwValue,
+    name: nameValue,
+    email: emailValue,
+    department: partValue,
+    rank: rankValue,
+  });
+
+  alert("회원가입이 완료되었습니다.");
+  location.href = "login.jsp";
 });

@@ -17,21 +17,21 @@
         <input id="pw_check" type="text" placeholder="비밀번호 확인" />
         <span id="pw_usable" style="display:none">비밀번호가 일치합니다</span>
         <span id="pw_unusable" style="display:none">비밀번호가 일치하지 않습니다</span>
-        <input type="text" placeholder="이름" />
+        <input id="name_box" type="text" placeholder="이름" />
         <input id="email_box" type="text" placeholder="이메일" />
         <input id="email_check" type="submit" value="중복확인" />
-        <select placeholder="부서">
+        <select id="part_select">
           <%-- selected disabled hidden에서 필요한 속성만 꺼냄 --%>
-          <option disabled>부서</option>
+          <option selected disabled>부서</option>
           <option>기획팀</option>
           <option>디자인팀</option>
         </select>
-        <select>
-          <option disabled>직급</option>
+        <select id="rank_select">
+          <option selected disabled>직급</option>
           <option>팀장</option>
           <option>팀원</option>
         </select>
-        <input type="submit" value="회원가입" />
+        <input id="signup_btn" type="submit" value="회원가입" />
       </section>
     </main>
     <script src="../event/signup.js"></script>
