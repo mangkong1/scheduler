@@ -102,5 +102,6 @@ document.querySelector("#signup_btn").addEventListener("click", () => {
   });
 
   alert("회원가입이 완료되었습니다.");
-  location.href = "login.jsp";
+  console.log(arr);
+  // location.href = "login.jsp";
 });

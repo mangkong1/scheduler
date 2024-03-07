@@ -1,4 +1,13 @@
 document.querySelector("#write_btn").addEventListener("click", () => {
+  let arr = [
+    {
+      date: "2024-03-03",
+      start_time: "16:00",
+      end_time: "17:00",
+      content: "부산 출장 갖다오기",
+    },
+  ];
+
   fetch("write_modal.jsp") // fetch메서드로 서버 연결해 write_modal 가져옴
     .then((response) => response.text()) // 파일의 응답을 text로 변환
     .then((data) => {
@@ -26,6 +35,28 @@ document.querySelector("#write_btn").addEventListener("click", () => {
         .addEventListener("click", () => {
           backContainer.remove();
           modalContainer.remove(); // write_modal 내부의 버튼에 이벤트 적용
+        });
+
+      modalContainer
+        .querySelector("#register_btn")
+        .addEventListener("click", () => {
+          const dateValue = modalContainer.querySelector("#date_box").value;
+          const startTimeValue =
+            modalContainer.querySelector("#start_time_box").value;
+          const endTimeValue =
+            modalContainer.querySelector("#end_time_box").value;
+          const contentValue =
+            modalContainer.querySelector("#content_box").value;
+
+          arr.push({
+            date: dateValue,
+            start_time: startTimeValue,
+            end_time: endTimeValue,
+            content: contentValue,
+          });
+
+          alert("데이터 추가!");
+          console.log(arr);
         });
     });
 });

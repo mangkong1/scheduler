@@ -19,6 +19,6 @@
         <button id="close_btn">취소</button>
       </section>
     </main>
-    <script src="write_register.js"></script>
+    <%-- <script src='../event/write_register.js'></script> --%>
   </body>
 </html>
