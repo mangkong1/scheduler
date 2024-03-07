@@ -1,9 +1,4 @@
 const idValue = document.querySelector("#id_value").textContent;
-// const pwValue = document.querySelector("#pw_value").textContent;
-// const nameValue = document.querySelector("#name_value").textContent;
-// const emailValue = document.querySelector("#email_value").textContent;
-// const partValue = document.querySelector("#part_value").textContent;
-// const rankValue = document.querySelector("#rank_value").textContent;
 
 let arr = [
   {

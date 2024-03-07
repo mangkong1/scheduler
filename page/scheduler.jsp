@@ -17,12 +17,12 @@
           <button id="write_btn">글쓰기</button>
         </article>
         <article>
-          <button href="">이전연도</button>
-          <button href="">다음연도</button>
-          <h3>2024년</h3>
-          <select>
+          <button id="prev_year_btn">이전연도</button>
+          <button id="next_year_btn">다음연도</button>
+          <h3 id="year"></h3>
+          <select id="month">
             <%-- js createElement로 나중에 바꿔보기 --%>
-            <option>1월</option>
+            <%-- <option>1월</option>
             <option>2월</option>
             <option>3월</option>
             <option>4월</option>
@@ -33,13 +33,13 @@
             <option>9월</option>
             <option>10월</option>
             <option>11월</option>
-            <option>12월</option>
+            <option>12월</option> --%>
           </select>
         </article>
-        <article>
+        <article id="calender_list">
           <%-- 요일개념없이 진행하기로 했으니 단순히 표로 해도되나?
           이것도 js createElement 생각해보기--%>
-          <table>
+          <table >
             <tr>
               <td>1</td>
               <td>2</td>

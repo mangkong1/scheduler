@@ -1,3 +1,30 @@
+// 현재연도에 맞춰 출력 후 연도 바꾸는 버튼 기능
+const yearElement = document.querySelector("#year");
+let currentYear = new Date().getFullYear();
+yearElement.textContent = currentYear + "년";
+
+document.querySelector("#prev_year_btn").addEventListener("click", () => {
+  currentYear--;
+  yearElement.textContent = currentYear + "년";
+});
+
+document.querySelector("#next_year_btn").addEventListener("click", () => {
+  currentYear++;
+  yearElement.textContent = currentYear + "년";
+});
+
+// 현재월에 맞춰 출력 후 선택하면서 바꾸는 선택창
+const monthElement = document.querySelector("#month");
+
+for (let i = 1; i <= 12; i++) {
+  const monthList = document.createElement("option");
+  monthList.textContent = i + "월";
+  monthElement.appendChild(monthList); // 0에는 1월, 1에는 2월 배정
+}
+
+monthElement.selectedIndex = new Date().getMonth(); // getMonth 메서드는 0부터 시작하는 값 반환
+
+// 글쓰기 모달창 띄우기
 document.querySelector("#write_btn").addEventListener("click", () => {
   let arr = [
     {

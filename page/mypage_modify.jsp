@@ -13,6 +13,8 @@
         <h1>마이페이지</h1>
         <input id="pw_box" type="password" />
         <input id="pw_check_box" type="password" />
+        <span id="pw_usable" style="display:none">비밀번호가 일치합니다</span>
+        <span id="pw_unusable" style="display:none">비밀번호가 일치하지 않습니다</span>
         <input id="name_box" type="text" />
         <input id="email_box" type="text" />
         <select id="part_box">
@@ -27,7 +29,7 @@
           <option>팀원</option>
         </select>
         <input id="register_btn" type="submit" value="등록" />
-        <button>취소</button>
+        <button id="cancel_btn">취소</button>
       </section>
     </main>
     <script src="../event/mypage_modify.js"></script>

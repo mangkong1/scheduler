@@ -27,6 +27,18 @@ partBox.value = arr[0].part;
 const rankBox = document.querySelector("#rank_box");
 rankBox.value = arr[0].rank;
 
+document.querySelector("#pw_check_box").addEventListener("input", () => {
+  const pwValue = document.querySelector("#pw_box").value;
+  const pwCheck = document.querySelector("#pw_check_box").value;
+  if (pwValue === pwCheck) {
+    document.querySelector("#pw_usable").style.display = "block";
+    document.querySelector("#pw_unusable").style.display = "none";
+  } else {
+    document.querySelector("#pw_unusable").style.display = "block";
+    document.querySelector("#pw_usable").style.display = "none";
+  }
+});
+
 document.querySelector("#register_btn").addEventListener("click", () => {
   const pwValue = document.querySelector("#pw_box").value;
   const nameValue = document.querySelector("#name_box").value;
@@ -41,4 +53,8 @@ document.querySelector("#register_btn").addEventListener("click", () => {
   arr[0].rank = rankValue;
 
   console.log(arr);
+});
+
+document.querySelector("#cancel_btn").addEventListener("click", () => {
+  location.href = "mypage.jsp";
 });
