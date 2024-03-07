@@ -28,11 +28,10 @@ let arr = [
 // 아이디 중복확인
 document.querySelector("#id_check").addEventListener("click", () => {
   const idValue = document.querySelector("#id_box").value;
-  // let을 사용해야 변화하는 로직을 만족할 수 있다. const 안됨
-  let isCheck = false;
+  let isCheck = false; // let을 사용해야 변화하는 로직을 만족할 수 있다. const 안됨
 
-  // 입력한 id와 동일한 것을 찾으면 isCheck를 바꾸고 반복문 즉시 종료
   for (let i = 0; i < arr.length; i++) {
+    // 입력한 id와 동일한 것을 찾으면 isCheck를 바꾸고 반복문 즉시 종료
     if (arr[i].id === idValue) {
       isCheck = true;
       break;
@@ -91,8 +90,8 @@ document.querySelector("#signup_btn").addEventListener("click", () => {
   const partValue = document.querySelector("#part_select").value;
   const rankValue = document.querySelector("#rank_select").value;
 
-  // 새로운 객체 생성 후 arr 배열에 추가
   arr.push({
+    // 새로운 객체 생성 후 arr 배열에 추가
     id: idValue,
     pw: pwValue,
     name: nameValue,

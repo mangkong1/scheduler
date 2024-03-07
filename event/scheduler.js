@@ -21,7 +21,6 @@ for (let i = 1; i <= 12; i++) {
   monthList.textContent = i + "월";
   monthElement.appendChild(monthList); // getMonth는 0부터 시작 0에는 1월, 1에는 2월 배정
 }
-
 monthElement.selectedIndex = new Date().getMonth(); // selectedIndex는 select요소에서 현재 선택된 옵션의 인덱스 나타냄
 
 // 월 선택에 따라 일 출력 조절
