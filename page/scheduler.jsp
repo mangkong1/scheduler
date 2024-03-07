@@ -20,69 +20,9 @@
           <button id="prev_year_btn">이전연도</button>
           <button id="next_year_btn">다음연도</button>
           <h3 id="year"></h3>
-          <select id="month">
-            <%-- js createElement로 나중에 바꿔보기 --%>
-            <%-- <option>1월</option>
-            <option>2월</option>
-            <option>3월</option>
-            <option>4월</option>
-            <option>5월</option>
-            <option>6월</option>
-            <option>7월</option>
-            <option>8월</option>
-            <option>9월</option>
-            <option>10월</option>
-            <option>11월</option>
-            <option>12월</option> --%>
-          </select>
+          <select id="month"></select>
         </article>
-        <article id="calender_list">
-          <%-- 요일개념없이 진행하기로 했으니 단순히 표로 해도되나?
-          이것도 js createElement 생각해보기--%>
-          <table >
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>9</td>
-              <td>10</td>
-              <td>11</td>
-              <td>12</td>
-              <td>13</td>
-              <td>14</td>
-            </tr>
-            <tr>
-              <td>15</td>
-              <td>16</td>
-              <td>17</td>
-              <td>18</td>
-              <td>19</td>
-              <td>20</td>
-              <td>21</td>
-            </tr>
-            <tr>
-              <td>22</td>
-              <td>23</td>
-              <td>24</td>
-              <td>25</td>
-              <td>26</td>
-              <td>27</td>
-              <td>28</td>
-            </tr>
-            <tr>
-              <td>29</td>
-              <td>30</td>
-              <td>31</td>
-            </tr>
-          </table>
-        </article>
+        <article id="calender_list"></article>
       </section>
     </main>
     <script src="../event/scheduler.js"></script>

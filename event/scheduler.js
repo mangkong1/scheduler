@@ -19,13 +19,56 @@ const monthElement = document.querySelector("#month");
 for (let i = 1; i <= 12; i++) {
   const monthList = document.createElement("option");
   monthList.textContent = i + "월";
-  monthElement.appendChild(monthList); // 0에는 1월, 1에는 2월 배정
+  monthElement.appendChild(monthList); // getMonth는 0부터 시작 0에는 1월, 1에는 2월 배정
 }
 
-monthElement.selectedIndex = new Date().getMonth(); // getMonth 메서드는 0부터 시작하는 값 반환
+monthElement.selectedIndex = new Date().getMonth(); // selectedIndex는 select요소에서 현재 선택된 옵션의 인덱스 나타냄
+
+// 월 선택에 따라 일 출력 조절
+const calenderList = document.querySelector("#calender_list");
+
+function setCalenderList(month) {
+  calenderList.innerHTML = ""; // 초기화하지 않으면 날짜출력이 쌓임
+
+  let day = 0;
+  switch (month) {
+    case "1월":
+    case "3월":
+    case "5월":
+    case "7월":
+    case "8월":
+    case "10월":
+    case "12월":
+      day = 31;
+      break;
+    case "4월":
+    case "6월":
+    case "9월":
+    case "11월":
+      day = 30;
+      break;
+    case "2월":
+      day = 28;
+      break;
+    default:
+      break;
+  }
+
+  for (let i = 1; i <= day; i++) {
+    const dayContainer = document.createElement("div");
+    dayContainer.textContent = i;
+    calenderList.appendChild(dayContainer);
+  }
+}
+
+setCalenderList(monthElement.value);
+
+monthElement.addEventListener("change", (e) => {
+  setCalenderList(e.target.value); // 이벤트가 발생한 요소의 현재값을 함수에 넣음
+});
 
 // 글쓰기 모달창 띄우기
-document.querySelector("#write_btn").addEventListener("click", () => {
+document.querySelector("#write_btn").addEventListener("click", function () {
   let arr = [
     {
       date: "2024-03-03",
