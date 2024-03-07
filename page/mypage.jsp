@@ -14,27 +14,27 @@
         <table>
           <tr>
             <td>아이디</td>
-            <td>xogud5053</td>
+            <td id="id_value">xogud5053</td>
           </tr>
           <tr>
             <td>비밀번호</td>
-            <td>1234</td>
+            <td id="pw_value">1234</td>
           </tr>
           <tr>
             <td>이름</td>
-            <td>김태형</td>
+            <td id="name_value">김태형</td>
           </tr>
           <tr>
             <td>이메일</td>
-            <td>xogud5053@gmail.com</td>
+            <td id="email_value">xogud5053@gmail.com</td>
           </tr>
           <tr>
             <td>부서</td>
-            <td>기획팀</td>
+            <td id="part_value">기획팀</td>
           </tr>
           <tr>
             <td>직급</td>
-            <td>팀장</td>
+            <td id="rank_value">팀장</td>
           </tr>
         </table>
         <input id="mypage_modify_btn" type="submit" value="수정">

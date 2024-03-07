@@ -11,18 +11,18 @@
     <main>
       <section>
         <h1>마이페이지</h1>
-        <input type="password" />
-        <input type="password" />
-        <input type="text" />
-        <input type="text" />
-        <select placeholder="부서">
+        <input id="pw_box" type="password" />
+        <input id="pw_check_box" type="password" />
+        <input id="name_box" type="text" />
+        <input id="email_box" type="text" />
+        <select>
           <%-- selected disabled hidden에서 필요한 속성만 꺼냄 --%>
-          <option disabled>부서</option>
+          <option id="part_select" disabled>부서</option>
           <option>기획팀</option>
           <option>디자인팀</option>
         </select>
-        <select placeholder="직급">
-          <option disabled>부서</option>
+        <select>
+          <option id="rank_select" disabled>직급</option>
           <option>팀장</option>
           <option>팀원</option>
         </select>

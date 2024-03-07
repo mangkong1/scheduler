@@ -1,3 +1,10 @@
+const idValue = document.querySelector("#id_value").textContent;
+// const pwValue = document.querySelector("#pw_value").textContent;
+// const nameValue = document.querySelector("#name_value").textContent;
+// const emailValue = document.querySelector("#email_value").textContent;
+// const partValue = document.querySelector("#part_value").textContent;
+// const rankValue = document.querySelector("#rank_value").textContent;
+
 let arr = [
   {
     id: "xogud1111",
@@ -16,7 +23,7 @@ let arr = [
     rank: "팀원",
   },
   {
-    id: "xogud3333",
+    id: "xogud5053",
     pw: "1234",
     name: "name3333",
     email: "xogud3333@gmail.com",
@@ -29,8 +36,10 @@ document.querySelector("#mypage_modify_btn").addEventListener("click", () => {
   location.href = "mypage_modify.jsp";
 });
 
+// 일단 구체적인 id값을 정하고 삭제하는 코드를 작성했다
+// Jsp파일의 특정값을 가져오는 코드를 나중에 짤 예정
 document.querySelector("#delete_btn").addEventListener("click", () => {
-  const index = arr.findIndex((item) => item.id === "xogud1111");
+  const index = arr.findIndex((item) => item.id === idValue);
   arr.splice(index, 1);
   console.log(arr);
 });
