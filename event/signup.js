@@ -25,6 +25,7 @@ let arr = [
   },
 ];
 
+// 아이디 중복확인
 document.querySelector("#id_check").addEventListener("click", () => {
   const idValue = document.querySelector("#id_box").value;
   // let을 사용해야 변화하는 로직을 만족할 수 있다. const 안됨
@@ -47,6 +48,7 @@ document.querySelector("#id_check").addEventListener("click", () => {
   }
 });
 
+// 비밀번호 일치확인
 document.querySelector("#pw_check").addEventListener("input", () => {
   const pwValue = document.querySelector("#pw_box").value;
   const pwCheck = document.querySelector("#pw_check").value;
@@ -59,6 +61,7 @@ document.querySelector("#pw_check").addEventListener("input", () => {
   }
 });
 
+// 이메일 중복확인
 document.querySelector("#email_check").addEventListener("click", () => {
   const emailValue = document.querySelector("#email_box").value;
   let isCheck = false;
@@ -79,6 +82,7 @@ document.querySelector("#email_check").addEventListener("click", () => {
   }
 });
 
+// 등록시 input값 배열에 넣기
 document.querySelector("#signup_btn").addEventListener("click", () => {
   const idValue = document.querySelector("#id_box").value;
   const pwValue = document.querySelector("#pw_box").value;
