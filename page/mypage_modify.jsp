@@ -15,18 +15,18 @@
         <input id="pw_check_box" type="password" />
         <input id="name_box" type="text" />
         <input id="email_box" type="text" />
-        <select>
+        <select id="part_box">
           <%-- selected disabled hidden에서 필요한 속성만 꺼냄 --%>
-          <option id="part_select" disabled>부서</option>
+          <option disabled>부서</option>
           <option>기획팀</option>
           <option>디자인팀</option>
         </select>
-        <select>
-          <option id="rank_select" disabled>직급</option>
+        <select id="rank_box">
+          <option disabled>직급</option>
           <option>팀장</option>
           <option>팀원</option>
         </select>
-        <input type="submit" value="등록" />
+        <input id="register_btn" type="submit" value="등록" />
         <button>취소</button>
       </section>
     </main>

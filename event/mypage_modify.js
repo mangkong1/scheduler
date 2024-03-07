@@ -4,33 +4,41 @@ let arr = [
     pw: "1234",
     name: "name1111",
     email: "xogud1111@gmail.com",
-    part: "기획팀",
+    part: "디자인팀",
     rank: "팀장",
   },
 ];
 
-document.querySelector("#pw_box").value = arr[0].pw;
-document.querySelector("#pw_check_box").value = arr[0].pw;
-document.querySelector("#name_box").value = arr[0].name;
-document.querySelector("#email_box").value = arr[0].email;
+const pwBox = document.querySelector("#pw_box");
+pwBox.value = arr[0].pw;
 
-// 부서에 맞춰 select 요소 출력
-const partSelect = document.querySelector("#part_select");
-const partOptions = partSelect.querySelectorAll("option");
-partOptions.forEach((option) => {
-  if (option.value === arr[0].part) {
-    option.selected = true;
-  }
+const pwCheckBox = document.querySelector("#pw_check_box");
+pwCheckBox.value = arr[0].pw;
+
+const nameBox = document.querySelector("#name_box");
+nameBox.value = arr[0].name;
+
+const emailBox = document.querySelector("#email_box");
+emailBox.value = arr[0].email;
+
+const partBox = document.querySelector("#part_box");
+partBox.value = arr[0].part;
+
+const rankBox = document.querySelector("#rank_box");
+rankBox.value = arr[0].rank;
+
+document.querySelector("#register_btn").addEventListener("click", () => {
+  const pwValue = document.querySelector("#pw_box").value;
+  const nameValue = document.querySelector("#name_box").value;
+  const emailValue = document.querySelector("#email_box").value;
+  const partValue = document.querySelector("#part_box").value;
+  const rankValue = document.querySelector("#rank_box").value;
+
+  arr[0].pw = pwValue;
+  arr[0].name = nameValue;
+  arr[0].email = emailValue;
+  arr[0].part = partValue;
+  arr[0].rank = rankValue;
+
+  console.log(arr);
 });
-
-// 직급에 맞춰 select 요소 출력
-const rankSelect = document.querySelector("#rank_select");
-const rankOptions = rankSelect.querySelectorAll("option");
-rankOptions.forEach((option) => {
-  if (option.value === arr[0].rank) {
-    option.selected = true;
-  }
-});
-
-console.log(partSelect.value);
-console.log(rankSelect.value);
