@@ -37,9 +37,10 @@
             <td>팀장</td>
           </tr>
         </table>
-        <input type="submit" value="수정">
-        <input type="submit" value="탈퇴">
+        <input id="mypage_modify_btn" type="submit" value="수정">
+        <input id="delete_btn" type="submit" value="탈퇴">
       </section>
     </main>
+    <script src="../event/mypage.js"></script>
   </body>
 </html>

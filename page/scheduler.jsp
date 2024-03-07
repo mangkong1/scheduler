@@ -13,9 +13,8 @@
         <article>
           <img style="width:100px" src="../img/calender_logo.png" alt="로고" />
           <input type="submit" value="로그아웃" />
-          <button>마이페이지</button>
-          
-          <button id='write_btn'>글쓰기</button>
+          <button id="mypage_btn">마이페이지</button>
+          <button id="write_btn">글쓰기</button>
         </article>
         <article>
           <button href="">이전연도</button>

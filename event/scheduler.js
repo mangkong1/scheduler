@@ -60,3 +60,7 @@ document.querySelector("#write_btn").addEventListener("click", () => {
         });
     });
 });
+
+document.querySelector("#mypage_btn").addEventListener("click", () => {
+  location.href = "mypage.jsp";
+});

@@ -30,5 +30,6 @@
         <button>취소</button>
       </section>
     </main>
+    <script src="../event/mypage_modify.js"></script>
   </body>
 </html>
