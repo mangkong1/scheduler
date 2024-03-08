@@ -156,9 +156,6 @@ document.querySelector("#mypage_btn").addEventListener("click", () => {
 
 document.querySelectorAll(".day").forEach((day) => {
   day.addEventListener("click", () => {
-    const width = 500;
-    const height = 700;
-
     window.open("listup_popup.jsp", "리스트업팝업창", "width=500, height=700");
   });
 });

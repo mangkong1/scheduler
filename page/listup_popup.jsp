@@ -9,14 +9,9 @@
   </head>
   <body>
     <main>
-      <section>
-        <h3>김태형</h3>
-        <h3>15:00 - 16:00</h3>
-        <h3>부산 출장</h3>
-        <hr>
-        <input type="submit" value="수정" />
-        <input type="submit" value="삭제" />
+      <section id="listup">
       </section>
     </main>
+    <script src="../event/listup_popup.js"></script>
   </body>
 </html>
