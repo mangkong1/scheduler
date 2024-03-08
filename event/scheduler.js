@@ -4,9 +4,10 @@ const monthElement = document.querySelector("#month");
 const dayContainer = document.querySelectorAll(".day");
 let selectYear = new Date().getFullYear();
 let selectMonth = new Date().getMonth() + 1;
+let selectDate = new Date().getDate();
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth() + 1; // 갯수가 정해진 배열로 생성하므로 const도 상관없음
-const currentDay = new Date().getDate();
+const currentDate = new Date().getDate();
 // 연,월 선택에 따라 일 출력 조절
 function setCalenderList(year, month) {
   calenderList.innerHTML = ""; // 초기화하지 않으면 날짜출력이 쌓임
@@ -38,9 +39,21 @@ function setCalenderList(year, month) {
   for (let i = 1; i <= day; i++) {
     const dayContainer = document.createElement("div");
     dayContainer.textContent = i;
-    dayContainer.classList.add(year + "년");
-    dayContainer.classList.add(month);
-    dayContainer.classList.add(i + "일"); //년,월,일 안해주니 3월3일같은 경우 겹쳐버린다
+    dayContainer.classList.add("day");
+    dayContainer.dataset.year = year;
+    dayContainer.dataset.month = month; // 클래스는 속성을 넣거나 특정작업 수행용, dataset은 동적 작업용
+    dayContainer.dataset.date = i; // 클래스로 년,월,일을 했을 때 3월3일같은 경우 겹쳐버린다, 따라서 dataset사용
+
+    if (
+      // 현재 날짜 맞춰 테두리 표시
+      parseInt(year) === currentYear &&
+      parseInt(month) === currentMonth &&
+      i === currentDate
+    ) {
+      // dayContainer의 textContent는 문자열이므로 숫자로 변환
+      dayContainer.style.border = "1px solid black"; // 테두리 설정, 나중에 css 작업
+    }
+
     calenderList.appendChild(dayContainer);
   }
 }
@@ -71,15 +84,6 @@ setCalenderList(selectYear, monthElement.value);
 
 monthElement.addEventListener("change", (e) => {
   setCalenderList(selectYear, e.target.value); // 이벤트가 발생한 요소의 현재값을 함수에 넣음
-});
-
-// 현재 날짜 맞춰 테두리 표시
-dayContainer.forEach((dayElement) => {
-  // dayContainer가 배열로 출력되므로 forEach 사용
-  if (parseInt(dayElement.textContent) === currentDay) {
-    // dayContainer의 textContent는 문자열이므로 숫자로 변환
-    dayElement.style.border = "1px solid black"; // 테두리 설정, 나중에 css 작업
-  }
 });
 
 // 글쓰기 모달창 띄우기
