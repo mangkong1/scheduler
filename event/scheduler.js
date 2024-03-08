@@ -1,32 +1,14 @@
-// 현재연도에 맞춰 출력 후 연도 바꾸는 버튼 기능
-const yearElement = document.querySelector("#year");
-let currentYear = new Date().getFullYear();
-yearElement.textContent = currentYear + "년";
-
-document.querySelector("#prev_year_btn").addEventListener("click", () => {
-  currentYear--;
-  yearElement.textContent = currentYear + "년";
-});
-
-document.querySelector("#next_year_btn").addEventListener("click", () => {
-  currentYear++;
-  yearElement.textContent = currentYear + "년";
-});
-
-// 현재월에 맞춰 출력 후 선택하면서 바꾸는 선택창
-const monthElement = document.querySelector("#month");
-
-for (let i = 1; i <= 12; i++) {
-  const monthList = document.createElement("option");
-  monthList.textContent = i + "월";
-  monthElement.appendChild(monthList); // getMonth는 0부터 시작 0에는 1월, 1에는 2월 배정
-}
-monthElement.selectedIndex = new Date().getMonth(); // selectedIndex는 select요소에서 현재 선택된 옵션의 인덱스 나타냄
-
-// 월 선택에 따라 일 출력 조절
 const calenderList = document.querySelector("#calender_list"); // 반복문에서 옵션 만든 후 요소 선택
-
-function setCalenderList(month) {
+const yearElement = document.querySelector("#year");
+const monthElement = document.querySelector("#month");
+const dayContainer = document.querySelectorAll(".day");
+let selectYear = new Date().getFullYear();
+let selectMonth = new Date().getMonth() + 1;
+const currentYear = new Date().getFullYear();
+const currentMonth = new Date().getMonth() + 1; // 갯수가 정해진 배열로 생성하므로 const도 상관없음
+const currentDay = new Date().getDate();
+// 연,월 선택에 따라 일 출력 조절
+function setCalenderList(year, month) {
   calenderList.innerHTML = ""; // 초기화하지 않으면 날짜출력이 쌓임
   let day = 0;
 
@@ -56,26 +38,46 @@ function setCalenderList(month) {
   for (let i = 1; i <= day; i++) {
     const dayContainer = document.createElement("div");
     dayContainer.textContent = i;
-    dayContainer.classList = "day";
+    dayContainer.classList.add(year + "년");
+    dayContainer.classList.add(month);
+    dayContainer.classList.add(i + "일"); //년,월,일 안해주니 3월3일같은 경우 겹쳐버린다
     calenderList.appendChild(dayContainer);
   }
 }
+// 현재연도에 맞춰 출력 후 연도 바꾸는 버튼 기능
+yearElement.textContent = selectYear + "년";
 
-setCalenderList(monthElement.value);
+document.querySelector("#prev_year_btn").addEventListener("click", () => {
+  selectYear--;
+  yearElement.textContent = selectYear + "년";
+  setCalenderList(selectYear, monthElement.value);
+});
+
+document.querySelector("#next_year_btn").addEventListener("click", () => {
+  selectYear++;
+  yearElement.textContent = selectYear + "년";
+  setCalenderList(selectYear, monthElement.value);
+});
+
+// 현재월에 맞춰 출력 후 선택하면서 바꾸는 선택창
+for (let i = 1; i <= 12; i++) {
+  const monthList = document.createElement("option");
+  monthList.textContent = i + "월";
+  monthElement.appendChild(monthList); // getMonth는 0부터 시작 0에는 1월, 1에는 2월 배정
+}
+
+monthElement.selectedIndex = selectMonth - 1; // selectedIndex는 select요소에서 현재 선택된 옵션의 인덱스 나타냄
+setCalenderList(selectYear, monthElement.value);
 
 monthElement.addEventListener("change", (e) => {
-  setCalenderList(e.target.value); // 이벤트가 발생한 요소의 현재값을 함수에 넣음
+  setCalenderList(selectYear, e.target.value); // 이벤트가 발생한 요소의 현재값을 함수에 넣음
 });
 
 // 현재 날짜 맞춰 테두리 표시
-const today = new Date().getDate();
-const dayContainer = document.querySelectorAll(".day");
-
 dayContainer.forEach((dayElement) => {
   // dayContainer가 배열로 출력되므로 forEach 사용
-  if (parseInt(dayElement.textContent) === today) {
+  if (parseInt(dayElement.textContent) === currentDay) {
     // dayContainer의 textContent는 문자열이므로 숫자로 변환
-    dayElement.classList.add("today");
     dayElement.style.border = "1px solid black"; // 테두리 설정, 나중에 css 작업
   }
 });
@@ -147,5 +149,3 @@ document.querySelector("#write_btn").addEventListener("click", function () {
 document.querySelector("#mypage_btn").addEventListener("click", () => {
   location.href = "mypage.jsp";
 });
-
-console.log(yearElement.textContent, monthElement.value); // 연도와 달을 출력
