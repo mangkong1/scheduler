@@ -33,8 +33,9 @@ document.querySelector("#mypage_modify_btn").addEventListener("click", () => {
 
 // 일단 구체적인 id값을 정하고 삭제하는 코드를 작성했다
 // Jsp파일의 특정값을 가져오는 코드를 나중에 짤 예정
+// 회원정보 삭제
 document.querySelector("#delete_btn").addEventListener("click", () => {
-  const index = arr.findIndex((item) => item.id === idValue);
-  arr.splice(index, 1);
+  const index = arr.findIndex((item) => item.id === idValue); // 조건을 만족하는 index를 찾음
+  arr.splice(index, 1); // 그 인덱스로부터 1요소 삭제(자기 자신만)
   console.log(arr);
 });

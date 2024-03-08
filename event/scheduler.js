@@ -24,12 +24,12 @@ for (let i = 1; i <= 12; i++) {
 monthElement.selectedIndex = new Date().getMonth(); // selectedIndex는 select요소에서 현재 선택된 옵션의 인덱스 나타냄
 
 // 월 선택에 따라 일 출력 조절
-const calenderList = document.querySelector("#calender_list");
+const calenderList = document.querySelector("#calender_list"); // 반복문에서 옵션 만든 후 요소 선택
 
 function setCalenderList(month) {
   calenderList.innerHTML = ""; // 초기화하지 않으면 날짜출력이 쌓임
-
   let day = 0;
+
   switch (month) {
     case "1월":
     case "3월":
@@ -56,6 +56,7 @@ function setCalenderList(month) {
   for (let i = 1; i <= day; i++) {
     const dayContainer = document.createElement("div");
     dayContainer.textContent = i;
+    dayContainer.classList = "day";
     calenderList.appendChild(dayContainer);
   }
 }
@@ -64,6 +65,19 @@ setCalenderList(monthElement.value);
 
 monthElement.addEventListener("change", (e) => {
   setCalenderList(e.target.value); // 이벤트가 발생한 요소의 현재값을 함수에 넣음
+});
+
+// 현재 날짜 맞춰 테두리 표시
+const today = new Date().getDate();
+const dayContainer = document.querySelectorAll(".day");
+
+dayContainer.forEach((dayElement) => {
+  // dayContainer가 배열로 출력되므로 forEach 사용
+  if (parseInt(dayElement.textContent) === today) {
+    // dayContainer의 textContent는 문자열이므로 숫자로 변환
+    dayElement.classList.add("today");
+    dayElement.style.border = "1px solid black"; // 테두리 설정, 나중에 css 작업
+  }
 });
 
 // 글쓰기 모달창 띄우기
@@ -133,3 +147,5 @@ document.querySelector("#write_btn").addEventListener("click", function () {
 document.querySelector("#mypage_btn").addEventListener("click", () => {
   location.href = "mypage.jsp";
 });
+
+console.log(yearElement.textContent, monthElement.value); // 연도와 달을 출력

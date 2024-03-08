@@ -27,6 +27,7 @@ partBox.value = arr[0].part;
 const rankBox = document.querySelector("#rank_box");
 rankBox.value = arr[0].rank;
 
+// 비밀번호 일치여부 메세지 출력
 document.querySelector("#pw_check_box").addEventListener("input", () => {
   const pwValue = document.querySelector("#pw_box").value;
   const pwCheck = document.querySelector("#pw_check_box").value;
@@ -39,6 +40,7 @@ document.querySelector("#pw_check_box").addEventListener("input", () => {
   }
 });
 
+// 입력값 배열로 전달
 document.querySelector("#register_btn").addEventListener("click", () => {
   const pwValue = document.querySelector("#pw_box").value;
   const nameValue = document.querySelector("#name_box").value;
