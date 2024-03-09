@@ -23,14 +23,16 @@ const arr = [
 ];
 
 const arr2 = {
-  name: "김태욱",
-  id: "xogud3333",
+  name: "김태준",
+  id: "xogud2222",
   rank: "팀장",
 };
 
 const listup = document.querySelector("#listup");
 
 for (i = 0; i < arr.length; i++) {
+  const listupContent = document.createElement("article");
+
   if (arr2.rank === "팀장") {
     const name = document.createElement("h3");
     name.textContent = arr[i].name;
@@ -50,11 +52,11 @@ for (i = 0; i < arr.length; i++) {
 
     const hr = document.createElement("hr");
 
-    listup.appendChild(name);
-    listup.appendChild(startTime);
-    listup.appendChild(endTime);
-    listup.appendChild(content);
-    listup.appendChild(hr);
+    listupContent.appendChild(name);
+    listupContent.appendChild(startTime);
+    listupContent.appendChild(endTime);
+    listupContent.appendChild(content);
+    listupContent.appendChild(hr);
   } else if (arr2.rank === "팀원" && arr[i].id === arr2.id) {
     const startTime = document.createElement("h3");
     startTime.textContent = arr[i].start_time;
@@ -70,10 +72,10 @@ for (i = 0; i < arr.length; i++) {
 
     const hr = document.createElement("hr");
 
-    listup.appendChild(startTime);
-    listup.appendChild(endTime);
-    listup.appendChild(content);
-    listup.appendChild(hr);
+    listupContent.appendChild(startTime);
+    listupContent.appendChild(endTime);
+    listupContent.appendChild(content);
+    listupContent.appendChild(hr);
   }
 
   if (arr2.id === arr[i].id) {
@@ -89,9 +91,14 @@ for (i = 0; i < arr.length; i++) {
     deleteBtn.id = "delete_btn";
     deleteBtn.type = "submit";
     deleteBtn.value = "삭제";
-    deleteBtn.addEventListener("click", (e) => {});
+    deleteBtn.addEventListener("click", (e) => {
+      e.target.closest("article").remove();
+      console.log(arr);
+    });
 
-    listup.appendChild(modifyBtn);
-    listup.appendChild(deleteBtn);
+    listupContent.appendChild(modifyBtn);
+    listupContent.appendChild(deleteBtn);
   }
+
+  listup.appendChild(listupContent);
 }
