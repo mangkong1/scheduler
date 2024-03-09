@@ -81,11 +81,15 @@ for (i = 0; i < arr.length; i++) {
     modifyBtn.id = "modify_btn";
     modifyBtn.type = "submit";
     modifyBtn.value = "수정";
+    modifyBtn.addEventListener("click", () => {
+      console.log("1");
+    });
 
     const deleteBtn = document.createElement("input");
     deleteBtn.id = "delete_btn";
     deleteBtn.type = "submit";
     deleteBtn.value = "삭제";
+    deleteBtn.addEventListener("click", (e) => {});
 
     listup.appendChild(modifyBtn);
     listup.appendChild(deleteBtn);
