@@ -83,7 +83,19 @@ for (i = 0; i < arr.length; i++) {
     modifyBtn.id = "modify_btn";
     modifyBtn.type = "submit";
     modifyBtn.value = "수정";
+
+    const deleteBtn = document.createElement("input");
+    deleteBtn.id = "delete_btn";
+    deleteBtn.type = "submit";
+    deleteBtn.value = "삭제";
+    // 삭제 버튼 클릭했을 때
+    deleteBtn.addEventListener("click", (e) => {
+      e.target.closest("article").remove(); // sql로 삭제문을 넣어줄 테니 데이터 삭제하는 코드는 안필요하지 않나?
+      alert("리스트가 삭제되었습니다!");
+    });
+
     modifyBtn.addEventListener("click", (e) => {
+      // 수정 버튼 클릭했을 때
       const article = e.target.closest("article");
       const startTime = article.querySelector("#start_time").textContent;
       const endTime = article.querySelector("#end_time").textContent;
@@ -111,8 +123,21 @@ for (i = 0; i < arr.length; i++) {
       // 확인 버튼 생성
       const confirmBtn = document.createElement("input");
       confirmBtn.id = "confirm_btn";
-      confirmBtn.type = "button";
+      confirmBtn.type = "submit";
       confirmBtn.value = "확인";
+
+      // 취소 버튼 생성
+      const cancelBtn = document.createElement("input");
+      cancelBtn.id = "cancel_btn";
+      cancelBtn.type = "submit";
+      cancelBtn.value = "취소";
+
+      // 수정 버튼을 확인 버튼으로 교체
+      modifyBtn.replaceWith(confirmBtn);
+      // 삭제 버튼을 취소 버튼으로 교체
+      deleteBtn.replaceWith(cancelBtn);
+
+      // 확인 버튼 클릭시
       confirmBtn.addEventListener("click", () => {
         // 입력한 값을 h3로 변경
         const newStartTime = document.createElement("h3");
@@ -134,20 +159,19 @@ for (i = 0; i < arr.length; i++) {
 
         // 확인 버튼을 다시 수정 버튼으로 변경
         article.querySelector("#confirm_btn").replaceWith(modifyBtn);
+        article.querySelector("#cancel_btn").replaceWith(deleteBtn);
       });
 
-      // 수정 버튼을 확인 버튼으로 교체
-      modifyBtn.replaceWith(confirmBtn);
-      console.log(arr);
-    });
+      // 취소 버튼 클릭시
+      cancelBtn.addEventListener("click", () => {
+        // startTimeInput.replaceWith(article.querySelector("#start_time"));
+        // endTimeInput.replaceWith(article.querySelector("#end_time"));
+        // contentInput.replaceWith(article.querySelector("#content"));
 
-    const deleteBtn = document.createElement("input");
-    deleteBtn.id = "delete_btn";
-    deleteBtn.type = "submit";
-    deleteBtn.value = "삭제";
-    deleteBtn.addEventListener("click", (e) => {
-      e.target.closest("article").remove(); // sql로 삭제문을 넣어줄 테니 데이터 삭제하는 코드는 안필요하지 않나?
-      alert("리스트가 삭제되었습니다!");
+        // confirmBtn.replaceWith(modifyBtn);
+        // cancelBtn.replaceWith(deleteBtn);
+        location.reload();
+      });
     });
 
     listupContent.appendChild(modifyBtn);
