@@ -30,153 +30,130 @@ const arr2 = {
 
 const listup = document.querySelector("#listup");
 
+// 중복되는 코드가 많아 함수로 정의
+function createContent(id, text) {
+  const h3 = document.createElement("h3");
+  h3.id = id;
+  h3.textContent = text;
+  return h3;
+}
+
+function createInput(id, type, value, placeholder) {
+  const input = document.createElement("input");
+  input.id = id;
+  input.type = type;
+  input.value = value;
+  input.placeholder = placeholder;
+  return input;
+}
+
+function createButton(id, type, value) {
+  const button = document.createElement("input");
+  button.id = id;
+  button.type = type;
+  button.value = value;
+  return button;
+}
+
 for (i = 0; i < arr.length; i++) {
   const listupContent = document.createElement("article");
+  const modifyBtn = createButton("modify_btn", "submit", "수정"); // 확인 버튼 클릭시의 조건문이
+  const deleteBtn = createButton("delete_btn", "submit", "삭제");
+  const name = createContent("name", arr[i].name);
+  const startTime = createContent("start_time", arr[i].start_time);
+  const endTime = createContent("end_time", arr[i].end_time);
+  const content = createContent("content", arr[i].content);
 
+  // 직급이 팀장일 때 이름포함 정보 생성
   if (arr2.rank === "팀장") {
-    const name = document.createElement("h3");
-    name.textContent = arr[i].name;
-    name.id = "name";
-
-    const startTime = document.createElement("h3");
-    startTime.textContent = arr[i].start_time;
-    startTime.id = "start_time";
-
-    const endTime = document.createElement("h3");
-    endTime.textContent = arr[i].end_time;
-    endTime.id = "end_time";
-
-    const content = document.createElement("h3");
-    content.textContent = arr[i].content;
-    content.id = "content";
-
-    const hr = document.createElement("hr");
-
     listupContent.appendChild(name);
     listupContent.appendChild(startTime);
     listupContent.appendChild(endTime);
     listupContent.appendChild(content);
-    listupContent.appendChild(hr);
+    listupContent.appendChild(document.createElement("hr"));
+    // 직급이 팀원일 때 이름 빼고 생성
   } else if (arr2.rank === "팀원" && arr[i].id === arr2.id) {
-    const startTime = document.createElement("h3");
-    startTime.textContent = arr[i].start_time;
-    startTime.id = "start_time";
-
-    const endTime = document.createElement("h3");
-    endTime.textContent = arr[i].end_time;
-    endTime.id = "end_time";
-
-    const content = document.createElement("h3");
-    content.textContent = arr[i].content;
-    content.id = "content";
-
-    const hr = document.createElement("hr");
-
     listupContent.appendChild(startTime);
     listupContent.appendChild(endTime);
     listupContent.appendChild(content);
-    listupContent.appendChild(hr);
+    listupContent.appendChild(document.createElement("hr"));
   }
 
+  // 본인 id일치하면 수정, 삭제 버튼 생성
   if (arr2.id === arr[i].id) {
-    const modifyBtn = document.createElement("input");
-    modifyBtn.id = "modify_btn";
-    modifyBtn.type = "submit";
-    modifyBtn.value = "수정";
-
-    const deleteBtn = document.createElement("input");
-    deleteBtn.id = "delete_btn";
-    deleteBtn.type = "submit";
-    deleteBtn.value = "삭제";
     // 삭제 버튼 클릭했을 때
     deleteBtn.addEventListener("click", (e) => {
+      // 생성도 동시에 하면서 이벤트 넣어줌
       e.target.closest("article").remove(); // sql로 삭제문을 넣어줄 테니 데이터 삭제하는 코드는 안필요하지 않나?
       alert("리스트가 삭제되었습니다!");
     });
 
+    // 수정 버튼 클릭했을 때 input 요소 생성
     modifyBtn.addEventListener("click", (e) => {
-      // 수정 버튼 클릭했을 때
       const article = e.target.closest("article");
       const startTime = article.querySelector("#start_time").textContent;
       const endTime = article.querySelector("#end_time").textContent;
       const content = article.querySelector("#content").textContent;
+      const confirmBtn = createButton("confirm_btn", "submit", "확인");
+      const cancelBtn = createButton("cancel_btn", "submit", "취소");
+      const startTimeInput = createInput(
+        "start_time_input",
+        "text",
+        startTime,
+        "시작 시간"
+      );
+      const endTimeInput = createInput(
+        "end_time_input",
+        "text",
+        endTime,
+        "종료 시간"
+      );
+      const contentInput = createInput(
+        "content_input",
+        "text",
+        content,
+        "내용"
+      );
 
-      // 수정할 내용을 input 요소로 변경
-      const startTimeInput = document.createElement("input");
-      startTimeInput.type = "text";
-      startTimeInput.value = startTime;
-      startTimeInput.placeholder = "시작 시간";
-      article.querySelector("#start_time").replaceWith(startTimeInput);
-
-      const endTimeInput = document.createElement("input");
-      endTimeInput.type = "text";
-      endTimeInput.value = endTime;
-      endTimeInput.placeholder = "종료 시간";
+      article.querySelector("#start_time").replaceWith(startTimeInput); // 수정할 내용을 input요소로 변경
       article.querySelector("#end_time").replaceWith(endTimeInput);
-
-      const contentInput = document.createElement("input");
-      contentInput.type = "text";
-      contentInput.value = content;
-      contentInput.placeholder = "내용";
       article.querySelector("#content").replaceWith(contentInput);
 
-      // 확인 버튼 생성
-      const confirmBtn = document.createElement("input");
-      confirmBtn.id = "confirm_btn";
-      confirmBtn.type = "submit";
-      confirmBtn.value = "확인";
+      modifyBtn.replaceWith(confirmBtn); // 수정 버튼을 확인 버튼으로 교체
+      deleteBtn.replaceWith(cancelBtn); // 삭제 버튼을 취소 버튼으로 교체
 
-      // 취소 버튼 생성
-      const cancelBtn = document.createElement("input");
-      cancelBtn.id = "cancel_btn";
-      cancelBtn.type = "submit";
-      cancelBtn.value = "취소";
-
-      // 수정 버튼을 확인 버튼으로 교체
-      modifyBtn.replaceWith(confirmBtn);
-      // 삭제 버튼을 취소 버튼으로 교체
-      deleteBtn.replaceWith(cancelBtn);
-
-      // 확인 버튼 클릭시
+      // 확인 버튼 클릭시 입력값 content로 변경
       confirmBtn.addEventListener("click", () => {
-        // 입력한 값을 h3로 변경
-        const newStartTime = document.createElement("h3");
-        newStartTime.textContent = startTimeInput.value;
-        newStartTime.id = "start_time";
+        const newStartTime = createContent(
+          "start_time",
+          article.querySelector("#start_time_input").value
+        );
+        const newEndTime = createContent(
+          "end_time",
+          article.querySelector("#end_time_input").value
+        );
+        const newContent = createContent(
+          "content",
+          article.querySelector("#content_input").value
+        );
 
-        const newEndTime = document.createElement("h3");
-        newEndTime.textContent = endTimeInput.value;
-        newEndTime.id = "end_time";
-
-        const newContent = document.createElement("h3");
-        newContent.textContent = contentInput.value;
-        newContent.id = "content";
-
-        // input 요소를 h3로 교체
-        startTimeInput.replaceWith(newStartTime);
+        startTimeInput.replaceWith(newStartTime); // input 요소를 content로 교체
         endTimeInput.replaceWith(newEndTime);
         contentInput.replaceWith(newContent);
 
-        // 확인 버튼을 다시 수정 버튼으로 변경
-        article.querySelector("#confirm_btn").replaceWith(modifyBtn);
-        article.querySelector("#cancel_btn").replaceWith(deleteBtn);
+        article.querySelector("#confirm_btn").replaceWith(modifyBtn); // 확인 버튼을 수정 버튼으로
+        article.querySelector("#cancel_btn").replaceWith(deleteBtn); // 취소 버튼을 삭제 버튼으로
       });
 
-      // 취소 버튼 클릭시
+      // 취소 버튼 클릭시 새로고침
       cancelBtn.addEventListener("click", () => {
-        // startTimeInput.replaceWith(article.querySelector("#start_time"));
-        // endTimeInput.replaceWith(article.querySelector("#end_time"));
-        // contentInput.replaceWith(article.querySelector("#content"));
-
-        // confirmBtn.replaceWith(modifyBtn);
-        // cancelBtn.replaceWith(deleteBtn);
         location.reload();
       });
     });
-
-    listupContent.appendChild(modifyBtn);
-    listupContent.appendChild(deleteBtn);
   }
 
-  listup.appendChild(listupContent);
+  listupContent.appendChild(modifyBtn); // 수정, 삭제 버튼 배치
+  listupContent.appendChild(deleteBtn); // article태그 안에 들어가야 해서 and 수정 삭제 버튼 배치에 대한 조건문 때문에도 여기 있어야 함
+
+  listup.appendChild(listupContent); // 시멘틱 태그 법칙을 위해서 한번 만들어봄
 }
