@@ -83,8 +83,62 @@ for (i = 0; i < arr.length; i++) {
     modifyBtn.id = "modify_btn";
     modifyBtn.type = "submit";
     modifyBtn.value = "수정";
-    modifyBtn.addEventListener("click", () => {
-      console.log("1");
+    modifyBtn.addEventListener("click", (e) => {
+      const article = e.target.closest("article");
+      const startTime = article.querySelector("#start_time").textContent;
+      const endTime = article.querySelector("#end_time").textContent;
+      const content = article.querySelector("#content").textContent;
+
+      // 수정할 내용을 input 요소로 변경
+      const startTimeInput = document.createElement("input");
+      startTimeInput.type = "text";
+      startTimeInput.value = startTime;
+      startTimeInput.placeholder = "시작 시간";
+      article.querySelector("#start_time").replaceWith(startTimeInput);
+
+      const endTimeInput = document.createElement("input");
+      endTimeInput.type = "text";
+      endTimeInput.value = endTime;
+      endTimeInput.placeholder = "종료 시간";
+      article.querySelector("#end_time").replaceWith(endTimeInput);
+
+      const contentInput = document.createElement("input");
+      contentInput.type = "text";
+      contentInput.value = content;
+      contentInput.placeholder = "내용";
+      article.querySelector("#content").replaceWith(contentInput);
+
+      // 확인 버튼 생성
+      const confirmBtn = document.createElement("input");
+      confirmBtn.id = "confirm_btn";
+      confirmBtn.type = "button";
+      confirmBtn.value = "확인";
+      confirmBtn.addEventListener("click", () => {
+        // 입력한 값을 h3로 변경
+        const newStartTime = document.createElement("h3");
+        newStartTime.textContent = startTimeInput.value;
+        newStartTime.id = "start_time";
+
+        const newEndTime = document.createElement("h3");
+        newEndTime.textContent = endTimeInput.value;
+        newEndTime.id = "end_time";
+
+        const newContent = document.createElement("h3");
+        newContent.textContent = contentInput.value;
+        newContent.id = "content";
+
+        // input 요소를 h3로 교체
+        startTimeInput.replaceWith(newStartTime);
+        endTimeInput.replaceWith(newEndTime);
+        contentInput.replaceWith(newContent);
+
+        // 확인 버튼을 다시 수정 버튼으로 변경
+        article.querySelector("#confirm_btn").replaceWith(modifyBtn);
+      });
+
+      // 수정 버튼을 확인 버튼으로 교체
+      modifyBtn.replaceWith(confirmBtn);
+      console.log(arr);
     });
 
     const deleteBtn = document.createElement("input");
@@ -92,8 +146,8 @@ for (i = 0; i < arr.length; i++) {
     deleteBtn.type = "submit";
     deleteBtn.value = "삭제";
     deleteBtn.addEventListener("click", (e) => {
-      e.target.closest("article").remove();
-      console.log(arr);
+      e.target.closest("article").remove(); // sql로 삭제문을 넣어줄 테니 데이터 삭제하는 코드는 안필요하지 않나?
+      alert("리스트가 삭제되었습니다!");
     });
 
     listupContent.appendChild(modifyBtn);
