@@ -57,12 +57,12 @@ function createButton(id, type, value) {
 
 for (i = 0; i < arr.length; i++) {
   const listupContent = document.createElement("article");
-  const modifyBtn = createButton("modify_btn", "submit", "수정"); // 확인 버튼 클릭시의 조건문이
-  const deleteBtn = createButton("delete_btn", "submit", "삭제");
   const name = createContent("name", arr[i].name);
   const startTime = createContent("start_time", arr[i].start_time);
   const endTime = createContent("end_time", arr[i].end_time);
   const content = createContent("content", arr[i].content);
+  const modifyBtn = createButton("modify_btn", "submit", "수정"); // 확인 버튼 클릭시의 조건문이
+  const deleteBtn = createButton("delete_btn", "submit", "삭제");
 
   // 직급이 팀장일 때 이름포함 정보 생성
   if (arr2.rank === "팀장") {
@@ -150,10 +150,9 @@ for (i = 0; i < arr.length; i++) {
         location.reload();
       });
     });
+    listupContent.appendChild(modifyBtn); // 수정, 삭제 버튼 배치
+    listupContent.appendChild(deleteBtn); // article태그 안에 들어가야 해서 and 수정 삭제 버튼 배치에 대한 조건문 때문에도 여기 있어야 함
   }
-
-  listupContent.appendChild(modifyBtn); // 수정, 삭제 버튼 배치
-  listupContent.appendChild(deleteBtn); // article태그 안에 들어가야 해서 and 수정 삭제 버튼 배치에 대한 조건문 때문에도 여기 있어야 함
 
   listup.appendChild(listupContent); // 시멘틱 태그 법칙을 위해서 한번 만들어봄
 }
