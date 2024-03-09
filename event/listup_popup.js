@@ -1,14 +1,3 @@
-const arr2 = [
-  {
-    name: "김태준",
-    id: "xogud2222",
-  },
-  // {
-  //   name: "김태준",
-  //   id: "xogud4444",
-  // },
-];
-
 const arr = [
   {
     name: "김태형",
@@ -33,35 +22,61 @@ const arr = [
   },
 ];
 
+const arr2 = {
+  name: "김태욱",
+  id: "xogud3333",
+  rank: "팀장",
+};
+
 const listup = document.querySelector("#listup");
 
-for (i = 0; i <= arr.length; i++) {
-  const name = document.createElement("h3");
-  name.textContent = arr[i].name;
-  name.id = "name";
+for (i = 0; i < arr.length; i++) {
+  if (arr2.rank === "팀장") {
+    const name = document.createElement("h3");
+    name.textContent = arr[i].name;
+    name.id = "name";
 
-  const startTime = document.createElement("h3");
-  startTime.textContent = arr[i].start_time;
-  startTime.id = "start_time";
+    const startTime = document.createElement("h3");
+    startTime.textContent = arr[i].start_time;
+    startTime.id = "start_time";
 
-  const endTime = document.createElement("h3");
-  endTime.textContent = arr[i].end_time;
-  endTime.id = "end_time";
+    const endTime = document.createElement("h3");
+    endTime.textContent = arr[i].end_time;
+    endTime.id = "end_time";
 
-  const content = document.createElement("h3");
-  content.textContent = arr[i].content;
-  content.id = "content";
+    const content = document.createElement("h3");
+    content.textContent = arr[i].content;
+    content.id = "content";
 
-  const hr = document.createElement("hr");
+    const hr = document.createElement("hr");
 
-  listup.appendChild(name);
-  listup.appendChild(startTime);
-  listup.appendChild(endTime);
-  listup.appendChild(content);
-  listup.appendChild(hr);
+    listup.appendChild(name);
+    listup.appendChild(startTime);
+    listup.appendChild(endTime);
+    listup.appendChild(content);
+    listup.appendChild(hr);
+  } else if (arr2.rank === "팀원" && arr[i].id === arr2.id) {
+    const startTime = document.createElement("h3");
+    startTime.textContent = arr[i].start_time;
+    startTime.id = "start_time";
 
-  const matchId = arr2.find((item) => item.id === arr[i].id); // find 메서드는 true,false로 반환
-  if (matchId) {
+    const endTime = document.createElement("h3");
+    endTime.textContent = arr[i].end_time;
+    endTime.id = "end_time";
+
+    const content = document.createElement("h3");
+    content.textContent = arr[i].content;
+    content.id = "content";
+
+    const hr = document.createElement("hr");
+
+    listup.appendChild(startTime);
+    listup.appendChild(endTime);
+    listup.appendChild(content);
+    listup.appendChild(hr);
+  }
+
+  if (arr2.id === arr[i].id) {
     const modifyBtn = document.createElement("input");
     modifyBtn.id = "modify_btn";
     modifyBtn.type = "submit";
