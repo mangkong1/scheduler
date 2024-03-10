@@ -1,0 +1,90 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+}
+
+#logo_img {
+  width: 240px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.input_box {
+  width: 300px;
+  height: 60px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #999ca4;
+  border-radius: 10px;
+  color: #999ca4;
+  padding-left: 22px;
+  box-sizing: border-box;
+}
+
+.input_box::placeholder {
+  color: #999ca4;
+}
+
+#login_btn {
+  width: 300px;
+  height: 60px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #1d66ff;
+  border-radius: 10px;
+  background-color: #1d66ff;
+  color: white;
+}
+
+#move_find_container {
+  width: 300px;
+  height: auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.move_find {
+  /* display: inline-block; 이 방식이 되지 않아 div태그를 씌웠다*/
+  color: #1d66ff;
+  font-size: 14px;
+}
+
+hr {
+  width: 300px;
+  margin: 0;
+  border: none; /* 기본 테두리 제거 */
+  border-top: 1px solid #999ca4; /* 색상 및 두께 설정 */
+}
+
+#move_signup {
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #42b729;
+  color: white;
+  margin-top: 16px;
+}

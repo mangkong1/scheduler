@@ -14,7 +14,7 @@ const arr = [
     name: "김태형",
     year: 2024,
     month: "3월",
-    date: 10,
+    date: 11,
     start_time: "10:00",
     end_time: "13:00",
     content: "광주 출장",
