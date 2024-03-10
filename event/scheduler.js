@@ -1,13 +1,47 @@
+const arr = [
+  {
+    id: "xogud1111",
+    name: "김태형",
+    year: 2024,
+    month: "3월",
+    date: 10,
+    start_time: "10:00",
+    end_time: "13:00",
+    content: "광주 출장",
+  },
+  {
+    id: "xogud1111",
+    name: "김태형",
+    year: 2024,
+    month: "3월",
+    date: 10,
+    start_time: "10:00",
+    end_time: "13:00",
+    content: "광주 출장",
+  },
+  {
+    id: "xogud1111",
+    name: "김태형",
+    year: 2024,
+    month: "3월",
+    date: 15,
+    start_time: "10:00",
+    end_time: "13:00",
+    content: "광주 출장",
+  },
+];
+
 const calenderList = document.querySelector("#calender_list"); // 반복문에서 옵션 만든 후 요소 선택
 const yearElement = document.querySelector("#year");
 const monthElement = document.querySelector("#month");
-const dayContainer = document.querySelectorAll(".day");
+const getDayContainer = document.querySelectorAll(".day");
 let selectYear = new Date().getFullYear();
 let selectMonth = new Date().getMonth() + 1;
 let selectDate = new Date().getDate();
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth() + 1; // 갯수가 정해진 배열로 생성하므로 const도 상관없음
 const currentDate = new Date().getDate();
+
 // 연,월 선택에 따라 일 출력 조절
 function setCalenderList(year, month) {
   calenderList.innerHTML = ""; // 초기화하지 않으면 날짜출력이 쌓임
@@ -44,6 +78,11 @@ function setCalenderList(year, month) {
     dayContainer.dataset.month = month; // 클래스는 속성을 넣거나 특정작업 수행용, dataset은 동적 작업용
     dayContainer.dataset.date = i; // 클래스로 년,월,일을 했을 때 3월3일같은 경우 겹쳐버린다, 따라서 dataset사용
 
+    const filteredArr = arr.filter(
+      (item) => item.year === year && item.month === month && item.date === i
+    );
+    const count = filteredArr.length;
+
     if (
       // 현재 날짜 맞춰 테두리 표시
       parseInt(year) === currentYear &&
@@ -52,6 +91,14 @@ function setCalenderList(year, month) {
     ) {
       // dayContainer의 textContent는 문자열이므로 숫자로 변환
       dayContainer.style.border = "1px solid black"; // 테두리 설정, 나중에 css 작업
+    }
+
+    if (count > 0) {
+      const countElement = document.createElement("div");
+      countElement.textContent = count;
+      countElement.classList.add("event_count");
+      countElement.style.backgroundColor = "green";
+      dayContainer.appendChild(countElement);
     }
 
     calenderList.appendChild(dayContainer);
@@ -152,10 +199,4 @@ document.querySelector("#write_btn").addEventListener("click", function () {
 
 document.querySelector("#mypage_btn").addEventListener("click", () => {
   location.href = "mypage.jsp";
-});
-
-document.querySelectorAll(".day").forEach((day) => {
-  day.addEventListener("click", () => {
-    window.open("listup_popup.jsp", "리스트업팝업창", "width=500, height=700");
-  });
 });
