@@ -20,12 +20,8 @@
     <main>
       <section>
         <article id="calender_modify_container">
-          <button id="prev_year_btn">
-            <%-- <img src="../img/left_side.png" /> --%>
-          </button>
-          <button id="next_year_btn">
-            <%-- <img src="../img/right_side.png" /> --%>
-          </button>
+          <button id="prev_year_btn"></button>
+          <button id="next_year_btn"></button>
           <h3 id="year"></h3>
           <select id="month"></select>
         </article>

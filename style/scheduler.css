@@ -92,5 +92,33 @@ body {
 }
 
 #calender_list {
-  grid-template-columns: repeat(7, 1fr);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7행으로 설정 */
+  grid-template-rows: repeat(5, 1fr); /* 5열로 설정 */
+  border-collapse: collapse;
+}
+
+.day {
+  position: relative;
+  border: 1px solid #dadde1;
+  width: 170px;
+  height: 120px;
+  font-size: 20px;
+  padding: 20px 0 0 20px;
+  box-sizing: border-box;
+}
+
+.event_count {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #42b729;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 100%;
 }
