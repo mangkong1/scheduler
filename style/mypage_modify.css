@@ -1,0 +1,83 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mypage_modify_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+}
+
+#mypage_modify_title {
+  font-size: 40px;
+  margin: 0 0 28px 0;
+}
+
+.input_box {
+  width: 350px;
+  height: 60px;
+  font-size: 20px;
+  margin-bottom: 28px;
+  border: 1px solid #999ca4;
+  border-radius: 10px;
+  color: #999ca4;
+  padding-left: 22px;
+  box-sizing: border-box;
+}
+
+.select_box {
+  width: 350px;
+  height: 60px;
+  font-size: 20px;
+  margin-bottom: 28px;
+  border: 1px solid #999ca4;
+  border-radius: 10px;
+  color: #999ca4;
+  padding-left: 22px;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  background-image: url("../img/down_side.png");
+  background-repeat: no-repeat;
+  background-position: right 22px center;
+  background-size: 24px;
+}
+
+#mypage_btn_container {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}
+
+#register_btn {
+  width: 160px;
+  height: 60px;
+  font-size: 20px;
+  border: 1px solid #1d66ff;
+  border-radius: 10px;
+  background-color: #1d66ff;
+  color: white;
+}
+
+#cancel_btn {
+  width: 160px;
+  height: 60px;
+  font-size: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 10px;
+  background-color: #dadde1;
+}
