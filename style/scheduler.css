@@ -6,12 +6,91 @@ html {
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-main {
+#scheduler_header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  width: 1000px;
+  margin-bottom: 28px;
+}
+
+#logo_img {
+  width: 230px;
+  height: auto;
+}
+
+#header_btn_container {
+  display: flex;
+  justify-content: space-between;
+  width: 420px;
+}
+
+.header_btn {
+  width: 120px;
+  height: 60px;
+  font-size: 20px;
+  border: 1px solid #1d66ff;
+  border-radius: 10px;
+  background-color: #1d66ff;
+  color: white;
+}
+
+#calender_modify_container {
+  display: flex;
+  justify-content: start;
   align-items: center;
+  width: 1000px;
+  margin-bottom: 28px;
+}
+
+#prev_year_btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background-color: white;
+  background-image: url("../img/left_side.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+  margin-right: 10px;
+}
+
+#next_year_btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background-color: white;
+  background-image: url("../img/right_side.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+  margin-right: 10px;
+}
+
+#year {
+  font-size: 30px;
+  margin-right: 20px;
+}
+
+#month {
+  width: 150px;
+  height: 50px;
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding-left: 22px;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  background-image: url("../img/down_side_month.png");
+  background-repeat: no-repeat;
+  background-position: right 22px center;
+  background-size: 24px;
+}
+
+#calender_list {
+  grid-template-columns: repeat(7, 1fr);
 }

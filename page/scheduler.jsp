@@ -9,17 +9,23 @@
     <title>Document</title>
   </head>
   <body>
+    <header id="scheduler_header">
+      <img id="logo_img" src="../img/calender_logo.png" alt="로고" />
+      <div id="header_btn_container">
+        <input class="header_btn" type="submit" value="로그아웃" />
+        <button class="header_btn" id="mypage_btn">마이페이지</button>
+        <button class="header_btn" id="write_btn">글쓰기</button>
+      </div>
+    </header>
     <main>
       <section>
-        <article>
-          <img style="width:100px" src="../img/calender_logo.png" alt="로고" />
-          <input type="submit" value="로그아웃" />
-          <button id="mypage_btn">마이페이지</button>
-          <button id="write_btn">글쓰기</button>
-        </article>
-        <article>
-          <button id="prev_year_btn">이전연도</button>
-          <button id="next_year_btn">다음연도</button>
+        <article id="calender_modify_container">
+          <button id="prev_year_btn">
+            <%-- <img src="../img/left_side.png" /> --%>
+          </button>
+          <button id="next_year_btn">
+            <%-- <img src="../img/right_side.png" /> --%>
+          </button>
           <h3 id="year"></h3>
           <select id="month"></select>
         </article>
