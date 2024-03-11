@@ -11,6 +11,7 @@
   <body>
     <header id="scheduler_header">
       <img id="logo_img" src="../img/calender_logo.png" alt="로고" />
+      
       <div id="header_btn_container">
         <input class="header_btn" type="submit" value="로그아웃" />
         <button class="header_btn" id="mypage_btn">마이페이지</button>
@@ -25,6 +26,7 @@
           <h3 id="year"></h3>
           <select id="month"></select>
         </article>
+
         <article id="calender_list"></article>
       </section>
     </main>

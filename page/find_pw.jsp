@@ -12,6 +12,7 @@
     <main>
       <section id="find_pw_section">
         <h1 id="find_pw_title">비밀번호 찾기</h1>
+        
         <input class="input_box" id="id_box" type="text" placeholder="아이디" />
         <input class="input_box" id="email_box" type="text" placeholder="이메일" />
         <input id="find_pw_btn" type="submit" value="비밀번호 찾기" />

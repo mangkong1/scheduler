@@ -12,6 +12,7 @@
     <main>
       <section id="find_id_section">
         <h1 id="find_id_title">아이디 찾기</h1>
+        
         <input class="input_box" id="name_box" type="text" placeholder="이름" />
         <input class="input_box" id="email_box" type="text" placeholder="이메일" />
         <input id="find_id_btn" type="submit" value="아이디 찾기" />

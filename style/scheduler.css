@@ -29,6 +29,7 @@ body {
   width: 420px;
 }
 
+/* css변수지정 해서 custom_blue같은 식으로 만들기 */
 .header_btn {
   width: 120px;
   height: 60px;
@@ -101,7 +102,7 @@ body {
 .day {
   position: relative;
   border: 1px solid #dadde1;
-  width: 170px;
+  width: 150px;
   height: 120px;
   font-size: 20px;
   padding: 20px 0 0 20px;

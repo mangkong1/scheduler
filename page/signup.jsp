@@ -12,19 +12,23 @@
     <main>
       <section id="signup_section">
         <h1 id="signup_title">회원가입</h1>
+
         <div class="check_container">
           <input class="input_box_small" id="id_box" type="text" placeholder="아이디" />
           <input class="check_btn" id="id_check" type="submit" value="중복확인" />
         </div>
+
         <input class="input_box" id="pw_box" type="text" placeholder="비밀번호" />
         <input class="input_box" id="pw_check" type="text" placeholder="비밀번호 확인" />
         <span id="pw_usable" style="display:none">비밀번호가 일치합니다</span>
         <span id="pw_unusable" style="display:none">비밀번호가 일치하지 않습니다</span>
+
         <input class="input_box" id="name_box" type="text" placeholder="이름" />
         <div class="check_container">
           <input class="input_box_small" id="email_box" type="text" placeholder="이메일" />
           <input class="check_btn" id="email_check" type="submit" value="중복확인" />
         </div>
+
         <select class="select_box" id="part_select">
           <%-- selected disabled hidden에서 필요한 속성만 꺼냄 --%>
           <%-- selected면 아무것도 선택 안했을 때 부서가 선택되는 문제 --%>
@@ -32,11 +36,13 @@
           <option>기획팀</option>
           <option>디자인팀</option>
         </select>
+
         <select class="select_box" id="rank_select">
           <option selected disabled>직급</option>
           <option>팀장</option>
           <option>팀원</option>
         </select>
+        
         <input id="signup_btn" type="submit" value="회원가입" />
       </section>
     </main>

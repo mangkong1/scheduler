@@ -12,6 +12,7 @@
     <main>
       <section id="mypage_section">
         <h1 id="mypage_title">마이페이지</h1>
+
         <table id="mypage_table">
           <tr>
             <td class="key_box">아이디</td>
@@ -38,6 +39,7 @@
             <td class="value_box" id="rank_value">팀장</td>
           </tr>
         </table>
+        
         <div id="mypage_btn_container">
           <input id="mypage_modify_btn" type="submit" value="수정">
           <input id="delete_btn" type="submit" value="탈퇴">

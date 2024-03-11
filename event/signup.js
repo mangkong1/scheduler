@@ -25,7 +25,7 @@ let arr = [
   },
 ];
 
-// 아이디 중복확인
+// 아이디 중복확인(백엔드에서)
 document.querySelector("#id_check").addEventListener("click", () => {
   const idValue = document.querySelector("#id_box").value;
   let isCheck = false; // let을 사용해야 변화하는 로직을 만족할 수 있다. const 안됨
@@ -42,7 +42,7 @@ document.querySelector("#id_check").addEventListener("click", () => {
     alert("이미 사용 중인 아이디입니다");
   } else {
     alert("사용 가능한 아이디입니다");
-    document.querySelector("#id_box").disabled = true;
+    // document.querySelector("#id_box").disabled = true;
     document.querySelector("#id_check").disabled = true;
   }
 });
@@ -89,7 +89,7 @@ document.querySelector("#signup_btn").addEventListener("click", () => {
   const emailValue = document.querySelector("#email_box").value;
   const partValue = document.querySelector("#part_select").value;
   const rankValue = document.querySelector("#rank_select").value;
-
+  // 프론트엔드 예외처리 자리로 좋다
   arr.push({
     // 새로운 객체 생성 후 arr 배열에 추가
     id: idValue,

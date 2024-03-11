@@ -142,7 +142,7 @@ document.querySelector("#write_btn").addEventListener("click", function () {
       content: "부산 출장 갖다오기",
     },
   ];
-
+  // fetch 보다 window.open또는 미리 만들고 띄우는 방법처럼 다른 좋은 방법 사용 가능
   fetch("write_modal.jsp") // fetch메서드로 서버 연결해 write_modal 가져옴
     .then((response) => response.text()) // 파일의 응답을 text로 변환
     .then((data) => {
