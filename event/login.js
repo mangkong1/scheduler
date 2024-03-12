@@ -35,8 +35,7 @@ document.querySelector("#login_btn").addEventListener("click", () => {
   // 프론트엔드 예외처리, 빈칸일 때 alert
   if (idValue === "") {
     alert("아이디를 입력해 주세요");
-  }
-  if (pwValue === "") {
+  } else if (pwValue === "") {
     alert("비밀번호를 입력해 주세요");
   } else {
     location.href = "scheduler.jsp";

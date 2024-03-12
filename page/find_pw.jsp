@@ -15,6 +15,7 @@
         
         <input class="input_box" id="id_box" type="text" placeholder="아이디" />
         <input class="input_box" id="email_box" type="text" placeholder="이메일" />
+        
         <input id="find_pw_btn" type="submit" value="비밀번호 찾기" />
       </section>
     </main>
