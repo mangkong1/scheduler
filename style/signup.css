@@ -69,6 +69,18 @@ main {
   box-sizing: border-box;
 }
 
+.input_pw_box {
+  width: 350px;
+  height: 60px;
+  font-size: 20px;
+  margin-bottom: 28px;
+  border: 1px solid #999ca4;
+  border-radius: 10px;
+  color: #999ca4;
+  padding-left: 22px;
+  box-sizing: border-box;
+}
+
 .select_box {
   width: 350px;
   height: 60px;

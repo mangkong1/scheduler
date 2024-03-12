@@ -24,60 +24,70 @@ let arr = [
     rank: "팀장",
   },
 ];
+const idBox = document.querySelector("#id_box");
+const idCheck = document.querySelector("#id_check");
+const pwBox = document.querySelector("#pw_box");
+const pwCheck = document.querySelector("#pw_check");
+const pwUsable = document.querySelector("#pw_usable");
+const pwUnusable = document.querySelector("#pw_unusable");
+const nameBox = document.querySelector("#name_box");
+const emailBox = document.querySelector("#email_box");
+const emailCheck = document.querySelector("#email_check");
 
-// 아이디 중복확인(백엔드에서)
-document.querySelector("#id_check").addEventListener("click", () => {
-  const idValue = document.querySelector("#id_box").value;
-  let isCheck = false; // let을 사용해야 변화하는 로직을 만족할 수 있다. const 안됨
-
-  for (let i = 0; i < arr.length; i++) {
-    // 입력한 id와 동일한 것을 찾으면 isCheck를 바꾸고 반복문 즉시 종료
-    if (arr[i].id === idValue) {
-      isCheck = true;
-      break;
-    }
-  }
-
-  if (isCheck) {
-    alert("이미 사용 중인 아이디입니다");
+// 아이디 중복확인(프론트 예외처리)
+idBox.addEventListener("input", () => {
+  if (idBox.value.length < 6 || idBox.value.length > 10) {
+    idBox.style.border = "3px solid #e63812";
+    idCheck.disabled = true;
+    idCheck.style.backgroundColor = "#dadde1";
   } else {
-    alert("사용 가능한 아이디입니다");
-    // document.querySelector("#id_box").disabled = true;
-    document.querySelector("#id_check").disabled = true;
+    idBox.style.border = "3px solid #1d66ff";
+    idCheck.disabled = false;
+    idCheck.style.backgroundColor = "#42b729";
   }
 });
+// 아이디 중복확인(백엔드 예외처리)
+idCheck.addEventListener("click", () => {});
 
 // 비밀번호 일치확인
-document.querySelector("#pw_check").addEventListener("input", () => {
-  const pwValue = document.querySelector("#pw_box").value;
-  const pwCheck = document.querySelector("#pw_check").value;
-  if (pwValue === pwCheck) {
-    document.querySelector("#pw_usable").style.display = "block";
-    document.querySelector("#pw_unusable").style.display = "none";
+document.querySelectorAll(".input_pw_box").forEach((input) =>
+  input.addEventListener("input", () => {
+    if (pwBox.value.length < 8 || pwBox.value.length > 10) {
+      pwBox.style.border = "3px solid #e63812";
+    } else {
+      pwBox.style.border = "3px solid #1d66ff";
+    }
+
+    if (pwBox.value === pwCheck.value) {
+      pwUsable.style.display = "block";
+      pwUnusable.style.display = "none";
+      pwCheck.style.border = "3px solid #1d66ff";
+    } else {
+      pwUsable.style.display = "none";
+      pwUnusable.style.display = "block";
+      pwCheck.style.border = "3px solid #e63812";
+    }
+  })
+);
+
+nameBox.addEventListener("input", () => {
+  if (nameBox.value.length < 2 || nameBox.value.length > 10) {
+    nameBox.style.border = "3px solid #e63812";
   } else {
-    document.querySelector("#pw_unusable").style.display = "block";
-    document.querySelector("#pw_usable").style.display = "none";
+    nameBox.style.border = "3px solid #1d66ff";
   }
 });
 
 // 이메일 중복확인
-document.querySelector("#email_check").addEventListener("click", () => {
-  const emailValue = document.querySelector("#email_box").value;
-  let isCheck = false;
-
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].email === emailValue) {
-      isCheck = true;
-      break;
-    }
-  }
-
-  if (isCheck) {
-    alert("이미 사용 중인 이메일입니다");
+emailBox.addEventListener("input", () => {
+  if (emailBox.value.length < 3) {
+    emailBox.style.border = "3px solid #e63812";
+    emailCheck.disabled = true;
+    emailCheck.style.backgroundColor = "#dadde1";
   } else {
-    alert("사용 가능한 이메일입니다");
-    document.querySelector("#email_box").disabled = true;
-    document.querySelector("#email_check").disabled = true;
+    emailBox.style.border = "3px solid #1d66ff";
+    emailCheck.disabled = false;
+    emailCheck.style.backgroundColor = "#42b729";
   }
 });
 
