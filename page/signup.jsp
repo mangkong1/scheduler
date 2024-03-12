@@ -10,7 +10,7 @@
   </head>
   <body>
     <main>
-      <section id="signup_section">
+      <section id="signup_section"> 
         <h1 id="signup_title">회원가입</h1>
 
         <div>
@@ -25,6 +25,7 @@
           <input class="input_pw_box" id="pw_box" type="text" placeholder="비밀번호" />
           <span class="constraint_message">비밀번호는 8~10자로 입력해주세요</span>
         </div>
+
         <div>
           <input class="input_pw_box" id="pw_check_box" type="text" placeholder="비밀번호 확인" />
           <span class="constraint_message" id="pw_usable">비밀번호가 일치합니다</span>
@@ -42,8 +43,6 @@
         </div>
 
         <select class="select_box" id="part_select">
-          <%-- selected disabled hidden에서 필요한 속성만 꺼냄 --%>
-          <%-- selected면 아무것도 선택 안했을 때 부서가 선택되는 문제 --%>
           <option selected disabled>부서</option>
           <option>기획팀</option>
           <option>디자인팀</option>

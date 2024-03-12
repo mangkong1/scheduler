@@ -20,7 +20,12 @@ let rankCheck = false;
 
 // 아이디 중복확인(프론트 예외처리)
 idBox.addEventListener("input", () => {
-  if (idBox.value.length < 6 || idBox.value.length > 10) {
+  if (idBox.value === "") {
+    idBox.style.border = "";
+    idCheckBtn.disabled = true;
+    idCheckBtn.style.backgroundColor = "#dadde1";
+    idCheck = false;
+  } else if (idBox.value.length < 6 || idBox.value.length > 10) {
     idBox.style.border = "3px solid #e63812";
     idCheckBtn.disabled = true;
     idCheckBtn.style.backgroundColor = "#dadde1";
@@ -32,13 +37,17 @@ idBox.addEventListener("input", () => {
     idCheck = true;
   }
 });
+
 // 아이디 중복확인(백엔드 예외처리)
 idCheckBtn.addEventListener("click", () => {});
 
 // 비밀번호 일치확인
 document.querySelectorAll(".input_pw_box").forEach((input) =>
   input.addEventListener("input", () => {
-    if (pwBox.value.length < 8 || pwBox.value.length > 10) {
+    if (pwBox.value === "") {
+      pwBox.style.border = "";
+      pwCheck = false;
+    } else if (pwBox.value.length < 8 || pwBox.value.length > 10) {
       pwBox.style.border = "3px solid #e63812";
       pwCheck = false;
     } else {
@@ -46,7 +55,11 @@ document.querySelectorAll(".input_pw_box").forEach((input) =>
       pwCheck = true;
     }
 
-    if (pwBox.value === pwCheckBox.value) {
+    if (pwCheckBox.value === "") {
+      pwCheckBox.style.border = "";
+      pwUnusable.style.display = "none";
+      pwCorrectCheck = false;
+    } else if (pwBox.value === pwCheckBox.value) {
       pwUsable.style.display = "block";
       pwUnusable.style.display = "none";
       pwCheckBox.style.border = "3px solid #1d66ff";
@@ -62,7 +75,10 @@ document.querySelectorAll(".input_pw_box").forEach((input) =>
 
 // 이름 형식 확인
 nameBox.addEventListener("input", () => {
-  if (nameBox.value.length < 2 || nameBox.value.length > 10) {
+  if (nameBox.value === "") {
+    nameBox.style.border = "";
+    nameCheck = false;
+  } else if (nameBox.value.length < 2 || nameBox.value.length > 10) {
     nameBox.style.border = "3px solid #e63812";
     nameCheck = false;
   } else {
@@ -73,7 +89,12 @@ nameBox.addEventListener("input", () => {
 
 // 이메일 형식 확인(프론트)
 emailBox.addEventListener("input", () => {
-  if (!emailRegex.test(emailBox.value)) {
+  if (emailBox.value === "") {
+    emailBox.style.border = "";
+    emailCheckBtn.disabled = true;
+    emailCheckBtn.style.backgroundColor = "#dadde1";
+    emailCheck = false;
+  } else if (!emailRegex.test(emailBox.value)) {
     emailBox.style.border = "3px solid #e63812";
     emailCheckBtn.disabled = true;
     emailCheckBtn.style.backgroundColor = "#dadde1";

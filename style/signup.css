@@ -52,8 +52,9 @@ main {
   font-size: 20px;
   border: none;
   border-radius: 10px;
-  background-color: #42b729;
+  background-color: #dadde1;
   color: white;
+  cursor: pointer;
 }
 
 .constraint_message {
@@ -111,6 +112,7 @@ main {
   background-repeat: no-repeat;
   background-position: right 22px center;
   background-size: 24px;
+  cursor: pointer;
 }
 
 #signup_btn {
@@ -122,4 +124,5 @@ main {
   background-color: #1d66ff;
   color: white;
   margin-top: 28px;
+  cursor: pointer;
 }
