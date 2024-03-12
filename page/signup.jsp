@@ -13,20 +13,28 @@
       <section id="signup_section">
         <h1 id="signup_title">회원가입</h1>
 
-        <div class="check_container">
-          <input class="input_box_small" id="id_box" type="text" placeholder="아이디" />
-          <input class="check_btn" id="id_check_btn" type="submit" value="중복확인" />
+        <div>
+          <div class="check_container">
+            <input class="input_box_small" id="id_box" type="text" placeholder="아이디" />
+            <input class="check_btn" id="id_check_btn" type="submit" value="중복확인" />
+          </div>
+          <span class="constraint_message">아이디는 6~10자로 입력해주세요</span>
         </div>
-        <span>아이디는 6~10자로 입력해주세요</span>
 
-        <input class="input_pw_box" id="pw_box" type="text" placeholder="비밀번호" />
-        <span>비밀번호는 8~10자로 입력해주세요</span>
-        <input class="input_pw_box" id="pw_check_box" type="text" placeholder="비밀번호 확인" />
-        <span id="pw_usable" style="display:none">비밀번호가 일치합니다</span>
-        <span id="pw_unusable" style="display:none">비밀번호가 일치하지 않습니다</span>
+        <div>
+          <input class="input_pw_box" id="pw_box" type="text" placeholder="비밀번호" />
+          <span class="constraint_message">비밀번호는 8~10자로 입력해주세요</span>
+        </div>
+        <div>
+          <input class="input_pw_box" id="pw_check_box" type="text" placeholder="비밀번호 확인" />
+          <span class="constraint_message" id="pw_usable">비밀번호가 일치합니다</span>
+          <span class="constraint_message" id="pw_unusable">비밀번호가 일치하지 않습니다</span>
+        </div>
 
-        <input class="input_box" id="name_box" type="text" placeholder="이름" />
-        <span>이름은 2~10자로 입력해주세요</span>
+        <div>
+          <input class="input_box" id="name_box" type="text" placeholder="이름" />
+          <span class="constraint_message">이름은 2~10자로 입력해주세요</span>
+        </div>
 
         <div class="check_container">
           <input class="input_box_small" id="email_box" type="text" placeholder="이메일" />

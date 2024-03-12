@@ -1,29 +1,3 @@
-// let arr = [
-//   {
-//     id: "xogud1111",
-//     pw: "1234",
-//     name: "name1111",
-//     email: "xogud1111@gmail.com",
-//     deaprtment: "기획팀",
-//     rank: "팀장",
-//   },
-//   {
-//     id: "xogud2222",
-//     pw: "1234",
-//     name: "name2222",
-//     email: "xogud2222@gmail.com",
-//     deaprtment: "기획팀",
-//     rank: "팀원",
-//   },
-//   {
-//     id: "xogud3333",
-//     pw: "1234",
-//     name: "name3333",
-//     email: "xogud3333@gmail.com",
-//     deaprtment: "디자인팀",
-//     rank: "팀장",
-//   },
-// ];
 const idBox = document.querySelector("#id_box");
 const idCheckBtn = document.querySelector("#id_check_btn");
 const pwBox = document.querySelector("#pw_box");
@@ -34,6 +8,8 @@ const nameBox = document.querySelector("#name_box");
 const emailBox = document.querySelector("#email_box");
 const emailCheckBtn = document.querySelector("#email_check_btn");
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+const partSelect = document.querySelector("#part_select");
+const rankSelect = document.querySelector("#rank_select");
 let idCheck = false;
 let pwCheck = false;
 let pwCorrectCheck = false;
@@ -110,10 +86,21 @@ emailBox.addEventListener("input", () => {
   }
 });
 
-//이메일 중복 확인(백)
+// 이메일 중복 확인(백)
 emailCheckBtn.addEventListener("click", () => {});
 
-// 등록시 input값 배열에 넣기
+// 부서와 직급 선택시 상태 변경
+partSelect.addEventListener("change", () => {
+  partSelect.style.border = "3px solid #1d66ff";
+  partCheck = true;
+});
+
+rankSelect.addEventListener("change", () => {
+  rankSelect.style.border = "3px solid #1d66ff";
+  rankCheck = true;
+});
+
+// 회원가입 누를 때 예외처리(프론트)
 document.querySelector("#signup_btn").addEventListener("click", () => {
   if (idCheck === false) {
     alert("올바른 아이디를 입력해주세요");
@@ -125,25 +112,12 @@ document.querySelector("#signup_btn").addEventListener("click", () => {
     alert("올바른 이름을 입력해주세요");
   } else if (emailCheck === false) {
     alert("올바른 이메일을 입력해주세요");
+  } else if (partCheck === false) {
+    alert("올바른 부서를 입력해주세요");
+  } else if (rankCheck === false) {
+    alert("올바른 직급을 입력해주세요");
   } else {
     alert("회원가입이 완료되었습니다.");
     location.href = "login.jsp";
   }
-
-  // const idValue = document.querySelector("#id_box").value;
-  // const pwValue = document.querySelector("#pw_box").value;
-  // const nameValue = document.querySelector("#name_box").value;
-  // const emailValue = document.querySelector("#email_box").value;
-  // const partValue = document.querySelector("#part_select").value;
-  // const rankValue = document.querySelector("#rank_select").value;
-  // // 프론트엔드 예외처리 자리로 좋다
-  // arr.push({
-  //   // 새로운 객체 생성 후 arr 배열에 추가
-  //   id: idValue,
-  //   pw: pwValue,
-  //   name: nameValue,
-  //   email: emailValue,
-  //   department: partValue,
-  //   rank: rankValue,
-  // });
 });
