@@ -1,3 +1,11 @@
+#back_container {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 #write_modal_section {
   display: none;
   flex-direction: column;

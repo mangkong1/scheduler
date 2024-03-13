@@ -1,30 +1,3 @@
-let arr = [
-  {
-    id: "xogud1111",
-    pw: "1234",
-    name: "name1111",
-    email: "xogud1111@gmail.com",
-    deaprtment: "기획팀",
-    rank: "팀장",
-  },
-  {
-    id: "xogud2222",
-    pw: "1234",
-    name: "name2222",
-    email: "xogud2222@gmail.com",
-    deaprtment: "기획팀",
-    rank: "팀원",
-  },
-  {
-    id: "xogud3333",
-    pw: "1234",
-    name: "name3333",
-    email: "xogud3333@gmail.com",
-    deaprtment: "디자인팀",
-    rank: "팀장",
-  },
-];
-
 // idValue와 pwValue를 전역변수로 외부에서 선언할 때 작동안함...왜?
 // 만약 전역변수로 선언한다면 html이 처음 실행될 때 값이 지정되므로
 // 빈 값으로 나온다 (console.log하면 금방 알 수 있었음!)

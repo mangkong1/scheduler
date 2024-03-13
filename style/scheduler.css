@@ -112,18 +112,3 @@ body {
   padding: 20px 0 0 20px;
   box-sizing: border-box;
 }
-
-.event_count {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #42b729;
-  color: white;
-  width: 48px;
-  height: 48px;
-  border: none;
-  border-radius: 100%;
-}
