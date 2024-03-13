@@ -11,7 +11,9 @@ document.querySelector("#login_btn").addEventListener("click", () => {
   } else if (pwValue === "") {
     alert("비밀번호를 입력해 주세요");
   } else {
-    location.href = "scheduler.jsp";
+    location.href = `scheduler.jsp?year=${new Date().getFullYear()}&month=${
+      new Date().getMonth() + 1
+    }`;
   }
 });
 
