@@ -93,6 +93,7 @@ body {
   background-repeat: no-repeat;
   background-position: right 22px center;
   background-size: 24px;
+  cursor: pointer;
 }
 
 #calender_list {
