@@ -1,15 +1,3 @@
-body,
-html {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -68,6 +56,7 @@ main {
   border-radius: 10px;
   background-color: #1d66ff;
   color: white;
+  cursor: pointer;
 }
 
 #close_btn {
@@ -77,4 +66,5 @@ main {
   border: 1px solid #dadde1;
   border-radius: 10px;
   background-color: #dadde1;
+  cursor: pointer;
 }

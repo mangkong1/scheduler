@@ -90,7 +90,7 @@ function setCalenderList(year, month) {
       i === currentDate
     ) {
       // dayContainer의 textContent는 문자열이므로 숫자로 변환
-      dayContainer.style.border = "3px solid #1d66ff"; // 테두리 설정, 나중에 css 작업
+      dayContainer.style.border = "3px solid var(--blue)"; // 테두리 설정, 나중에 css 작업
     }
 
     if (count > 0) {

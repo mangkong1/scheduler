@@ -21,10 +21,10 @@ document.querySelectorAll(".input_pw_box").forEach((input) =>
       pwBox.style.border = "";
       pwCheck = false;
     } else if (pwBox.value.length < 8 || pwBox.value.length > 10) {
-      pwBox.style.border = "3px solid #e63812";
+      pwBox.style.border = "3px solid var(--red)";
       pwCheck = false;
     } else {
-      pwBox.style.border = "3px solid #1d66ff";
+      pwBox.style.border = "3px solid var(--blue)";
       pwCheck = true;
     }
 
@@ -35,12 +35,12 @@ document.querySelectorAll(".input_pw_box").forEach((input) =>
     } else if (pwBox.value === pwCheckBox.value) {
       pwUsable.style.display = "block";
       pwUnusable.style.display = "none";
-      pwCheckBox.style.border = "3px solid #1d66ff";
+      pwCheckBox.style.border = "3px solid var(--blue)";
       pwCorrectCheck = true;
     } else {
       pwUsable.style.display = "none";
       pwUnusable.style.display = "block";
-      pwCheckBox.style.border = "3px solid #e63812";
+      pwCheckBox.style.border = "3px solid var(--red)";
       pwCorrectCheck = false;
     }
   })
@@ -52,10 +52,10 @@ nameBox.addEventListener("input", () => {
     nameBox.style.border = "";
     nameCheck = false;
   } else if (nameBox.value.length < 2 || nameBox.value.length > 10) {
-    nameBox.style.border = "3px solid #e63812";
+    nameBox.style.border = "3px solid var(--red)";
     nameCheck = false;
   } else {
-    nameBox.style.border = "3px solid #1d66ff";
+    nameBox.style.border = "3px solid var(--blue)";
     nameCheck = true;
   }
 });
@@ -64,17 +64,18 @@ emailBox.addEventListener("input", () => {
   if (emailBox.value === "") {
     emailBox.style.border = "";
     emailCheckBtn.disabled = true;
-    emailCheckBtn.style.backgroundColor = "#dadde1";
+    emailCheckBtn.style.backgroundColor = "var(--lightgray)";
     emailCheck = false;
   } else if (!emailRegex.test(emailBox.value)) {
-    emailBox.style.border = "3px solid #e63812";
+    emailBox.style.border = "3px solid var(--red)";
     emailCheckBtn.disabled = true;
-    emailCheckBtn.style.backgroundColor = "#dadde1";
+    emailCheckBtn.style.backgroundColor = "var(--lightgray)";
     emailCheck = false;
   } else {
-    emailBox.style.border = "3px solid #1d66ff";
+    emailBox.style.border = "3px solid var(--blue)";
     emailCheckBtn.disabled = false;
-    emailCheckBtn.style.backgroundColor = "#42b729";
+    emailCheckBtn.style.backgroundColor = "var(--green)";
+    emailCheckBtn.style.cursor = "pointer";
     emailCheck = true;
   }
 });

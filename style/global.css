@@ -1,0 +1,25 @@
+:root {
+  --blue: #1d66ff;
+  --red: #e63812;
+  --green: #42b729;
+  --gray: #999ca4;
+  --lightgray: #dadde1;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

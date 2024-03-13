@@ -38,6 +38,7 @@ body {
   border-radius: 10px;
   background-color: #1d66ff;
   color: white;
+  cursor: pointer;
 }
 
 #calender_modify_container {
@@ -58,6 +59,7 @@ body {
   background-position: center;
   background-size: 16px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 #next_year_btn {
@@ -70,6 +72,7 @@ body {
   background-position: center;
   background-size: 16px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 #year {

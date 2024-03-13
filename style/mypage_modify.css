@@ -1,21 +1,3 @@
-body,
-html {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #mypage_modify_section {
   display: flex;
   flex-direction: column;
@@ -33,9 +15,9 @@ main {
   height: 60px;
   font-size: 20px;
   margin-top: 28px;
-  border: 1px solid #999ca4;
+  border: 1px solid var(--gray);
   border-radius: 10px;
-  color: #999ca4;
+  color: var(--gray);
   padding-left: 22px;
   box-sizing: border-box;
 }
@@ -45,9 +27,9 @@ main {
   height: 60px;
   font-size: 20px;
   margin-top: 28px;
-  border: 1px solid #999ca4;
+  border: 1px solid var(--gray);
   border-radius: 10px;
-  color: #999ca4;
+  color: var(--gray);
   padding-left: 22px;
   box-sizing: border-box;
 }
@@ -60,12 +42,12 @@ main {
 
 #pw_usable {
   display: none;
-  color: #1d66ff;
+  color: var(--blue);
 }
 
 #pw_unusable {
   display: none;
-  color: #e63812;
+  color: var(--red);
 }
 
 .check_container {
@@ -79,9 +61,9 @@ main {
   width: 230px;
   height: 60px;
   font-size: 20px;
-  border: 1px solid #999ca4;
+  border: 1px solid var(--gray);
   border-radius: 10px;
-  color: #999ca4;
+  color: var(--gray);
   padding-left: 22px;
   box-sizing: border-box;
 }
@@ -92,7 +74,7 @@ main {
   font-size: 20px;
   border: none;
   border-radius: 10px;
-  background-color: #42b729;
+  background-color: var(--green);
   color: white;
   cursor: pointer;
 }
@@ -102,9 +84,9 @@ main {
   height: 60px;
   font-size: 20px;
   margin-top: 28px;
-  border: 1px solid #999ca4;
+  border: 1px solid var(--gray);
   border-radius: 10px;
-  color: #999ca4;
+  color: var(--gray);
   padding-left: 22px;
   box-sizing: border-box;
   -webkit-appearance: none;
@@ -125,17 +107,19 @@ main {
   width: 160px;
   height: 60px;
   font-size: 20px;
-  border: 1px solid #1d66ff;
+  border: 1px solid var(--blue);
   border-radius: 10px;
-  background-color: #1d66ff;
+  background-color: var(--blue);
   color: white;
+  cursor: pointer;
 }
 
 #cancel_btn {
   width: 160px;
   height: 60px;
   font-size: 20px;
-  border: 1px solid #dadde1;
+  border: 1px solid var(--lightgray);
   border-radius: 10px;
-  background-color: #dadde1;
+  background-color: var(--lightgray);
+  cursor: pointer;
 }

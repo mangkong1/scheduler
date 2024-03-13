@@ -1,21 +1,3 @@
-body,
-html {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #login_section {
   display: flex;
   flex-direction: column;
@@ -54,6 +36,7 @@ main {
   border-radius: 10px;
   background-color: #1d66ff;
   color: white;
+  cursor: pointer;
 }
 
 #move_find_container {
@@ -63,6 +46,7 @@ main {
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
+  cursor: pointer;
 }
 
 .move_find {
@@ -87,4 +71,5 @@ hr {
   background-color: #42b729;
   color: white;
   margin-top: 16px;
+  cursor: pointer;
 }
