@@ -14,8 +14,8 @@
       <section id="login_section">
         <img id="logo_img" src="../img/calender_logo.png" alt="로고" />
 
-        <input class="input_box" id="id_box" type="text" placeholder="아이디" />
-        <input class="input_box" id="pw_box" type="password" placeholder="비밀번호" />
+        <input name="id_value" class="input_box" id="id_box" type="text" placeholder="아이디" />
+        <input name="pw_value" class="input_box" id="pw_box" type="password" placeholder="비밀번호" />
         <input id="login_btn" type="submit" value="로그인" />
         
         <div id="move_find_container">
