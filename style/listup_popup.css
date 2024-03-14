@@ -1,0 +1,86 @@
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; /* 원하는 너비 */
+  height: 700px; /* 원하는 높이 */
+}
+
+#listup {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+article {
+  margin-top: 50px;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0 10px 0 0;
+}
+
+.article_content {
+  display: inline;
+  margin-top: 10px;
+}
+
+#content {
+  display: block;
+}
+
+hr {
+  margin-top: 10px;
+}
+
+.btn_container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#start_time_input,
+#end_time_input {
+  width: 55px;
+  height: 25px;
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+#content_input {
+  width: 400px;
+  height: 70px;
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#modify_btn,
+#confirm_btn {
+  width: 85px;
+  height: 50px;
+  font-size: 20px;
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  background-color: var(--blue);
+  color: white;
+  margin-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#delete_btn,
+#cancel_btn {
+  width: 85px;
+  height: 50px;
+  font-size: 20px;
+  border: 1px solid var(--lightgray);
+  border-radius: 10px;
+  background-color: var(--lightgray);
+  margin-top: 10px;
+  cursor: pointer;
+}

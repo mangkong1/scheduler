@@ -32,10 +32,11 @@ const listup = document.querySelector("#listup");
 
 // 중복되는 코드가 많아 함수로 정의
 function createContent(id, text) {
-  const h3 = document.createElement("h3");
-  h3.id = id;
-  h3.textContent = text;
-  return h3;
+  const listupText = document.createElement("h1");
+  listupText.id = id;
+  listupText.textContent = text;
+  listupText.classList.add("article_content");
+  return listupText;
 }
 
 function createInput(id, type, value, placeholder) {
@@ -57,13 +58,17 @@ function createButton(id, type, value) {
 
 for (i = 0; i < arr.length; i++) {
   const listupContent = document.createElement("article");
+  listupContent.id = i;
   const name = createContent("name", arr[i].name);
   const startTime = createContent("start_time", arr[i].start_time);
   const endTime = createContent("end_time", arr[i].end_time);
   const content = createContent("content", arr[i].content);
+  const btnContainer = document.createElement("div");
+  btnContainer.classList = "btn_container";
   const modifyBtn = createButton("modify_btn", "submit", "수정"); // 확인 버튼 클릭시의 조건문이
   const deleteBtn = createButton("delete_btn", "submit", "삭제");
-
+  btnContainer.appendChild(modifyBtn);
+  btnContainer.appendChild(deleteBtn);
   // 직급이 팀장일 때 이름포함 정보 생성
   if (arr2.rank === "팀장") {
     listupContent.appendChild(name);
@@ -115,6 +120,67 @@ for (i = 0; i < arr.length; i++) {
         "내용"
       );
 
+      const timeRegex = /([0-1][0-9]|2[0-3]):([0-5][0-9])/;
+      let startTimeCheck = true;
+      let endTimeCheck = true;
+      let contentCheck = true;
+
+      startTimeInput.addEventListener("input", () => {
+        if (startTimeInput.value === "") {
+          startTimeInput.style.border = "";
+          startTimeCheck = false;
+        } else if (!timeRegex.test(startTimeInput.value)) {
+          startTimeInput.style.border = "3px solid var(--red)";
+          startTimeCheck = false;
+        } else {
+          startTimeInput.style.border = "3px solid var(--blue)";
+          startTimeCheck = true;
+        }
+      });
+
+      endTimeInput.addEventListener("input", () => {
+        if (endTimeInput.value === "") {
+          endTimeInput.style.border = "";
+          endTimeCheck = false;
+        } else if (!timeRegex.test(endTimeInput.value)) {
+          endTimeInput.style.border = "3px solid var(--red)";
+          endTimeCheck = false;
+        } else if (endTimeInput.value < startTimeInput.value) {
+          endTimeInput.style.border = "3px solid var(--red)";
+          endTimeCheck = false;
+        } else {
+          endTimeInput.style.border = "3px solid var(--blue)";
+          endTimeCheck = true;
+        }
+      });
+
+      contentInput.addEventListener("input", () => {
+        if (contentInput.value === "") {
+          contentInput.style.border = "";
+          contentCheck = false;
+        } else if (contentInput.value.length > 100) {
+          contentInput.style.border = "3px solid var(--red)";
+          contentCheck = false;
+        } else {
+          contentInput.style.border = "3px solid var(--blue)";
+          contentCheck = true;
+        }
+      });
+
+      confirmBtn.addEventListener("click", () => {
+        if (startTimeCheck === false) {
+          alert("올바른 시작시간을 입력해주세요");
+        } else if (endTimeCheck === false) {
+          alert("올바른 종료시간을 입력해주세요");
+        } else if (contentCheck === false) {
+          alert("올바른 일정 내용을 입력해주세요");
+        } else {
+          // location.href = `scheduler.jsp?year=${new Date().getFullYear()}&month=${
+          //   new Date().getMonth() + 1
+          // }`;
+        }
+      });
+
       article.querySelector("#start_time").replaceWith(startTimeInput); // 수정할 내용을 input요소로 변경
       article.querySelector("#end_time").replaceWith(endTimeInput);
       article.querySelector("#content").replaceWith(contentInput);
@@ -150,9 +216,26 @@ for (i = 0; i < arr.length; i++) {
         location.reload();
       });
     });
-    listupContent.appendChild(modifyBtn); // 수정, 삭제 버튼 배치
-    listupContent.appendChild(deleteBtn); // article태그 안에 들어가야 해서 and 수정 삭제 버튼 배치에 대한 조건문 때문에도 여기 있어야 함
+    listupContent.appendChild(btnContainer);
   }
 
   listup.appendChild(listupContent); // 시멘틱 태그 법칙을 위해서 한번 만들어봄
 }
+
+listup.querySelectorAll("article").forEach((article) => {
+  // article 요소의 id 값을 가져옴
+  const articleId = parseInt(article.id);
+
+  // 랜덤한 RGB 값 생성
+  // 6자리 랜덤 색상 코드 생성
+  const randomColor =
+    "#" +
+    Math.floor(Math.random() * 0xffffff)
+      .toString(16)
+      .padStart(6, "0");
+
+  // article의 자식 h1 태그에 스타일을 적용하여 글자색 변경
+  article.querySelectorAll("h1").forEach((e) => {
+    e.style.color = randomColor;
+  });
+});

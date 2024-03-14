@@ -56,6 +56,14 @@ function setCalenderList(year, month) {
     }
 
     calenderList.appendChild(dayContainer);
+    dayContainer.addEventListener("click", () => {
+      const popup = window.open(
+        `listup_popup.jsp?year=${selectYear}&month=${selectMonth}&day=${i}`,
+        "",
+        "width=600, height=700"
+      );
+      popup.document.body.classList.add("popup");
+    });
   }
 }
 // 현재연도에 맞춰 출력 후 연도 바꾸는 버튼 기능
@@ -228,5 +236,3 @@ document.querySelector("#mypage_btn").addEventListener("click", () => {
 document.querySelector("#logout_btn").addEventListener("click", () => {
   location.href = "login.jsp";
 });
-
-console.log(parseInt(yearElement.textContent), parseInt(monthElement.value));
