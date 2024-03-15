@@ -11,7 +11,6 @@
     <title>Document</title>
   </head>
   <body>
-
     <header id="scheduler_header">
       <img id="logo_img" src="../img/calender_logo.png" alt="로고" />
       
@@ -21,6 +20,7 @@
         <button class="header_btn" id="write_btn">글쓰기</button>
       </div>
     </header>
+    
     <main>
       <section>
         <article id="calender_modify_container">
@@ -46,8 +46,6 @@
           <button id="close_btn">취소</button>
         </div>
       </section>
-
-
     </main>
     <script src="../event/scheduler.js"></script>
     <div id="back_container"></div>

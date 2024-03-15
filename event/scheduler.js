@@ -13,24 +13,25 @@ const currentDate = new Date().getDate();
 function setCalenderList(year, month) {
   calenderList.innerHTML = ""; // 초기화하지 않으면 날짜출력이 쌓임
   let day = 0;
-
-  switch ((year, month)) {
-    case "1월":
-    case "3월":
-    case "5월":
-    case "7월":
-    case "8월":
-    case "10월":
-    case "12월":
+  switch (
+    month // 월에 따라 day를 다르게 하는 조건문
+  ) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
       day = 31;
       break;
-    case "4월":
-    case "6월":
-    case "9월":
-    case "11월":
+    case 4:
+    case 6:
+    case 9:
+    case 11:
       day = 30;
       break;
-    case "2월":
+    case 2:
       day = 28;
       break;
     default:
@@ -48,21 +49,16 @@ function setCalenderList(year, month) {
     if (
       // 현재 날짜 맞춰 테두리 표시
       selectYear === currentYear &&
-      selectMonth === currentMonth &&
+      parseInt(monthElement.value) === currentMonth &&
       i === currentDate
     ) {
-      // dayContainer의 textContent는 문자열이므로 숫자로 변환
       dayContainer.style.border = "3px solid var(--blue)"; // 테두리 설정, 나중에 css 작업
     }
 
     calenderList.appendChild(dayContainer);
+
     dayContainer.addEventListener("click", () => {
-      const popup = window.open(
-        `listup_popup.jsp?year=${selectYear}&month=${selectMonth}&day=${i}`,
-        "",
-        "width=600, height=700"
-      );
-      popup.document.body.classList.add("popup");
+      window.open(`listup_popup.jsp?year=${selectYear}&month=${selectMonth}&day=${i}`, "", "width=600, height=700");
     });
   }
 }
@@ -72,14 +68,14 @@ yearElement.textContent = selectYear + "년";
 document.querySelector("#prev_year_btn").addEventListener("click", () => {
   selectYear--;
   yearElement.textContent = selectYear + "년";
-  setCalenderList(selectYear, monthElement.value);
+  setCalenderList(selectYear, selectMonth);
   updateUrl();
 });
 
 document.querySelector("#next_year_btn").addEventListener("click", () => {
   selectYear++;
   yearElement.textContent = selectYear + "년";
-  setCalenderList(selectYear, monthElement.value);
+  setCalenderList(selectYear, selectMonth);
   updateUrl();
 });
 
@@ -91,40 +87,47 @@ for (let i = 1; i <= 12; i++) {
 }
 
 monthElement.selectedIndex = selectMonth - 1; // selectedIndex는 select요소에서 현재 선택된 옵션의 인덱스 나타냄
-setCalenderList(selectYear, monthElement.value);
+setCalenderList(selectYear, selectMonth); // 첫화면에 3월이 뜨도록 하는 기능
 
 monthElement.addEventListener("change", (e) => {
-  setCalenderList(selectYear, e.target.value); // 이벤트가 발생한 요소의 현재값을 함수에 넣음
+  setCalenderList(selectYear, parseInt(e.target.value)); // 이벤트가 발생한 요소의 현재값을 함수에 넣음
 });
 
-// URL에서 selectYear와 selectMonth 값을 가져와서 변수에 할당하는 함수
-function initializeFromUrl() {
-  const urlParams = new URLSearchParams(window.location.search); // url을 가져옴
-  selectYear = parseInt(urlParams.get("year")) || selectYear; // URL에 year 값이 없으면 기존 값 사용
-  selectMonth = parseInt(urlParams.get("month")) || selectMonth; // URL에 month 값이 없으면 기존 값 사용
-}
+// function addUrl(selectYear, selectMonth) {
+//   let params = "?year=" + selectYear + "&month=" + selectMonth;
+//   window.location.href += params;
+//   return;
+// }
+// addUrl(selectYear, selectMonth);
 
-// yearElement와 monthElement의 변경 이벤트에 URL을 업데이트하는 함수
-function updateUrl() {
-  const currentUrl = new URL(window.location.href);
-  currentUrl.searchParams.set("year", selectYear);
-  currentUrl.searchParams.set("month", selectMonth);
-  window.history.replaceState({}, "", currentUrl);
-}
+// // URL에서 selectYear와 selectMonth 값을 가져와서 변수에 할당하는 함수
+// function initializeFromUrl() {
+//   const urlParams = new URLSearchParams(window.location.search); // url을 가져옴
+//   selectYear = parseInt(urlParams.get("year")) || selectYear; // URL에 year 값이 없으면 기존 값 사용
+//   selectMonth = parseInt(urlParams.get("month")) || selectMonth; // URL에 month 값이 없으면 기존 값 사용
+// }
 
-// 초기에 URL에서 값을 가져와 변수에 할당
-initializeFromUrl();
+// // yearElement와 monthElement의 변경 이벤트에 URL을 업데이트하는 함수
+// function updateUrl() {
+//   const currentUrl = new URL(window.location.href);
+//   currentUrl.searchParams.set("year", selectYear);
+//   currentUrl.searchParams.set("month", selectMonth);
+//   window.history.replaceState({}, "", currentUrl);
+// }
 
-// yearElement와 monthElement의 변경 이벤트에 updateUrl 함수 연결
-yearElement.addEventListener("change", () => {
-  selectYear = parseInt(yearElement.textContent);
-  updateUrl();
-});
+// // 초기에 URL에서 값을 가져와 변수에 할당
+// initializeFromUrl();
 
-monthElement.addEventListener("change", () => {
-  selectMonth = parseInt(monthElement.value);
-  updateUrl();
-});
+// // yearElement와 monthElement의 변경 이벤트에 updateUrl 함수 연결
+// yearElement.addEventListener("change", () => {
+//   selectYear = parseInt(yearElement.textContent);
+//   updateUrl();
+// });
+
+// monthElement.addEventListener("change", () => {
+//   selectMonth = parseInt(monthElement.value);
+//   updateUrl();
+// });
 
 // 글쓰기 모달창 띄우기
 document.querySelector("#write_btn").addEventListener("click", () => {
@@ -212,9 +215,7 @@ document.querySelector("#write_btn").addEventListener("click", () => {
     } else if (contentCheck === false) {
       alert("올바른 일정 내용을 입력해주세요");
     } else {
-      location.href = `scheduler.jsp?year=${new Date().getFullYear()}&month=${
-        new Date().getMonth() + 1
-      }`;
+      location.href = `scheduler.jsp?year=${currentYear}&month=${currentMonth}`;
     }
   });
 
