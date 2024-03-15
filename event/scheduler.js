@@ -43,39 +43,63 @@ function setCalenderList(year, month) {
     dayContainer.textContent = i;
     dayContainer.classList.add("day");
     dayContainer.dataset.year = selectYear;
-    dayContainer.dataset.month = selectMonth; // 클래스는 속성을 넣거나 특정작업 수행용, dataset은 동적 작업용
+    dayContainer.dataset.month = parseInt(monthElement.value); // 클래스는 속성을 넣거나 특정작업 수행용, dataset은 동적 작업용
     dayContainer.dataset.date = i; // 클래스로 년,월,일을 했을 때 3월3일같은 경우 겹쳐버린다, 따라서 dataset사용
-
-    if (
-      // 현재 날짜 맞춰 테두리 표시
-      selectYear === currentYear &&
-      parseInt(monthElement.value) === currentMonth &&
-      i === currentDate
-    ) {
-      dayContainer.style.border = "3px solid var(--blue)"; // 테두리 설정, 나중에 css 작업
-    }
 
     calenderList.appendChild(dayContainer);
 
     dayContainer.addEventListener("click", () => {
-      window.open(`listup_popup.jsp?year=${selectYear}&month=${selectMonth}&day=${i}`, "", "width=600, height=700");
+      window.open(`listup_popup.jsp?year=${selectYear}&month=${parseInt(monthElement.value)}&day=${i}`, "", "width=600, height=700");
     });
   }
+  today();
 }
+
+function today() {
+  // 현재 날짜에 해당하는 요소에 테두리 표시
+  const day = document.querySelectorAll(".day");
+  day.forEach((e) => {
+    const year = parseInt(e.dataset.year);
+    const month = parseInt(e.dataset.month);
+    const date = parseInt(e.dataset.date);
+
+    if (year === currentYear && month === currentMonth && date === currentDate) {
+      e.style.border = "3px solid var(--blue)";
+    }
+  });
+}
+
+function updateUrl() {
+  const year = selectYear;
+  const month = parseInt(monthElement.value);
+  history.pushState(null, "", `scheduler.jsp?year=${year}&month=${month}`);
+}
+
+window.addEventListener("load", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const year = parseInt(urlParams.get("year"));
+  const month = parseInt(urlParams.get("month"));
+
+  // 연도와 월에 따라 페이지 업데이트
+  yearElement.textContent = year + "년";
+  monthElement.selectedIndex = month - 1;
+  setCalenderList(year, month);
+});
+
 // 현재연도에 맞춰 출력 후 연도 바꾸는 버튼 기능
 yearElement.textContent = selectYear + "년";
 
 document.querySelector("#prev_year_btn").addEventListener("click", () => {
   selectYear--;
   yearElement.textContent = selectYear + "년";
-  setCalenderList(selectYear, selectMonth);
+  setCalenderList(selectYear, parseInt(monthElement.value));
   updateUrl();
 });
 
 document.querySelector("#next_year_btn").addEventListener("click", () => {
   selectYear++;
   yearElement.textContent = selectYear + "년";
-  setCalenderList(selectYear, selectMonth);
+  setCalenderList(selectYear, parseInt(monthElement.value));
   updateUrl();
 });
 
@@ -91,43 +115,8 @@ setCalenderList(selectYear, selectMonth); // 첫화면에 3월이 뜨도록 하�
 
 monthElement.addEventListener("change", (e) => {
   setCalenderList(selectYear, parseInt(e.target.value)); // 이벤트가 발생한 요소의 현재값을 함수에 넣음
+  updateUrl();
 });
-
-// function addUrl(selectYear, selectMonth) {
-//   let params = "?year=" + selectYear + "&month=" + selectMonth;
-//   window.location.href += params;
-//   return;
-// }
-// addUrl(selectYear, selectMonth);
-
-// // URL에서 selectYear와 selectMonth 값을 가져와서 변수에 할당하는 함수
-// function initializeFromUrl() {
-//   const urlParams = new URLSearchParams(window.location.search); // url을 가져옴
-//   selectYear = parseInt(urlParams.get("year")) || selectYear; // URL에 year 값이 없으면 기존 값 사용
-//   selectMonth = parseInt(urlParams.get("month")) || selectMonth; // URL에 month 값이 없으면 기존 값 사용
-// }
-
-// // yearElement와 monthElement의 변경 이벤트에 URL을 업데이트하는 함수
-// function updateUrl() {
-//   const currentUrl = new URL(window.location.href);
-//   currentUrl.searchParams.set("year", selectYear);
-//   currentUrl.searchParams.set("month", selectMonth);
-//   window.history.replaceState({}, "", currentUrl);
-// }
-
-// // 초기에 URL에서 값을 가져와 변수에 할당
-// initializeFromUrl();
-
-// // yearElement와 monthElement의 변경 이벤트에 updateUrl 함수 연결
-// yearElement.addEventListener("change", () => {
-//   selectYear = parseInt(yearElement.textContent);
-//   updateUrl();
-// });
-
-// monthElement.addEventListener("change", () => {
-//   selectMonth = parseInt(monthElement.value);
-//   updateUrl();
-// });
 
 // 글쓰기 모달창 띄우기
 document.querySelector("#write_btn").addEventListener("click", () => {

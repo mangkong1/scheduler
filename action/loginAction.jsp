@@ -48,10 +48,7 @@
 %>
 
 <script>
-  // var list = <%=list%> //이건 익숙한 js list이다
-  // console.log(list) // list변수로 따로 지정해서 console.log 사용해줌
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1; // 갯수가 정해진 배열로 생성하므로 const도 상관없음
-
   location.href="../page/scheduler.jsp?year=" + currentYear  + "&month=" + currentMonth
 </script>
