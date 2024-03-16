@@ -95,6 +95,11 @@ emailBox.addEventListener("input", () => {
     emailCheckBtn.disabled = true;
     emailCheckBtn.style.backgroundColor = "var(--lightgray)";
     emailCheck = false;
+  } else if (emailBox.value.length > 30) {
+    emailBox.style.border = "3px solid var(--red)";
+    emailCheckBtn.disabled = true;
+    emailCheckBtn.style.backgroundColor = "var(--lightgray)";
+    emailCheck = false;
   } else if (!emailRegex.test(emailBox.value)) {
     emailBox.style.border = "3px solid var(--red)";
     emailCheckBtn.disabled = true;
@@ -108,18 +113,29 @@ emailBox.addEventListener("input", () => {
   }
 });
 
-// 이메일 중복 확인(백)
-emailCheckBtn.addEventListener("click", () => {});
-
 // 부서와 직급 선택시 상태 변경
-partSelect.addEventListener("change", () => {
-  partSelect.style.border = "3px solid var(--blue)";
-  partCheck = true;
+partSelect.addEventListener("input", () => {
+  if (partSelect.value === "") {
+    partSelect.style.border = "";
+    partSelect.style.color = "";
+    partCheck = false;
+  } else {
+    partSelect.style.border = "3px solid var(--blue)";
+    partSelect.style.color = "black";
+    partCheck = true;
+  }
 });
 
-rankSelect.addEventListener("change", () => {
-  rankSelect.style.border = "3px solid var(--blue)";
-  rankCheck = true;
+rankSelect.addEventListener("input", () => {
+  if (rankSelect.value === "") {
+    rankSelect.style.border = "";
+    rankSelect.style.color = "";
+    rankCheck = false;
+  } else {
+    rankSelect.style.border = "3px solid var(--blue)";
+    rankSelect.style.color = "black";
+    rankCheck = true;
+  }
 });
 
 // 회원가입 누를 때 예외처리(프론트)
@@ -139,7 +155,6 @@ document.querySelector("#signup_btn").addEventListener("click", () => {
   } else if (rankCheck === false) {
     alert("올바른 직급을 입력해주세요");
   } else {
-    alert("회원가입이 완료되었습니다.");
-    location.href = "login.jsp";
+    document.querySelector("#signup_form").submit();
   }
 });

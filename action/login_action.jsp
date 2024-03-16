@@ -7,9 +7,6 @@
 <%@ page import='java.util.Calendar' %> 
 
 <%
-  Class.forName("com.mysql.jdbc.Driver");
-  Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/calender","stageus","1234");
-
   String idValue = request.getParameter("id_value");
   String pwValue = request.getParameter("pw_value");
 
@@ -19,6 +16,9 @@
   } else if (pwValue.equals("")) {
     out.println("비밀번호를 입력해주세요");
   } else {
+     Class.forName("com.mysql.jdbc.Driver");
+    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/calender","stageus","1234");
+
     String sql = "SELECT * FROM user WHERE id=? AND pw=?";
     PreparedStatement query = connect.prepareStatement(sql);
     query.setString(1, idValue);

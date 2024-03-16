@@ -11,7 +11,7 @@ document.querySelector("#login_btn").addEventListener("click", (e) => {
   } else if (pwValue === "") {
     alert("비밀번호를 입력해 주세요");
   } else {
-    document.getElementById("login_form").submit();
+    document.querySelector("#login_form").submit();
   }
 });
 
