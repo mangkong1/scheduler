@@ -17,7 +17,8 @@
           <form id="login_form" action="../action/loginAction.jsp">
             <input name="id_value" class="input_box" id="id_box" type="text" placeholder="아이디" />
             <input name="pw_value" class="input_box" id="pw_box" type="password" placeholder="비밀번호" />
-            <input id="login_btn" type="submit" value="로그인" />
+            <input id="login_btn" type="button" value="로그인" /> 
+            <%-- 위와같이 타입을 바꿔 해결 --%>
           </form>
           
           <div id="move_find_container">
