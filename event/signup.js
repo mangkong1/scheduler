@@ -10,6 +10,9 @@ const emailCheckBtn = document.querySelector("#email_check_btn");
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const partSelect = document.querySelector("#part_select");
 const rankSelect = document.querySelector("#rank_select");
+const signupForm = document.querySelector("#signup_form");
+idCheckBtn.disabled = true;
+emailCheckBtn.disabled = true;
 let idCheck = false;
 let pwCheck = false;
 let pwCorrectCheck = false;
@@ -17,6 +20,8 @@ let nameCheck = false;
 let emailCheck = false;
 let partCheck = false;
 let rankCheck = false;
+let idDuplicateCheck = false;
+let emailDuplicateCheck = false;
 
 // 아이디 중복확인(프론트 예외처리)
 idBox.addEventListener("input", () => {
@@ -38,9 +43,6 @@ idBox.addEventListener("input", () => {
     idCheck = true;
   }
 });
-
-// 아이디 중복확인(백엔드 예외처리)
-idCheckBtn.addEventListener("click", () => {});
 
 // 비밀번호 일치확인
 document.querySelectorAll(".input_pw_box").forEach((input) =>
@@ -113,6 +115,46 @@ emailBox.addEventListener("input", () => {
   }
 });
 
+// 아이디 중복확인(백엔드 예외처리)
+idCheckBtn.addEventListener("click", () => {
+  let idBox = document.getElementById("id_box").value;
+  window.open("../action/id_check_action.jsp?id_box=" + idBox, "", "width=400, height=300");
+});
+
+// 이메일 중복 확인(백)
+emailCheckBtn.addEventListener("click", () => {
+  let emailBox = document.getElementById("email_box").value;
+  window.open("../action/email_check_action.jsp?email_box=" + emailBox, "", "width=400, height=300");
+});
+
+window.addEventListener("message", (e) => {
+  if (e.data.isIdDuplicate !== undefined) {
+    // isIdDuplicate 프로퍼티가 정의되어 있으면 아이디 중복 여부를 판단
+    if (e.data.isIdDuplicate) {
+      alert("아이디가 중복됩니다");
+      idDuplicateCheck = false;
+    } else {
+      alert("아이디가 사용가능합니다");
+      idDuplicateCheck = true;
+      idCheckBtn.disabled = true;
+      idCheckBtn.style = "";
+      idCheckBtn.style.backgroundColor = "var(--lightgray)";
+    }
+  } else if (e.data.isEmailDuplicate !== undefined) {
+    // isEmailDuplicate 프로퍼티가 정의되어 있으면 이메일 중복 여부를 판단
+    if (e.data.isEmailDuplicate) {
+      alert("이메일이 중복됩니다");
+      emailDuplicateCheck = false;
+    } else {
+      alert("이메일이 사용가능합니다");
+      emailDuplicateCheck = true;
+      emailCheckBtn.disabled = true;
+      emailCheckBtn.style = "";
+      emailCheckBtn.style.backgroundColor = "var(--lightgray)";
+    }
+  }
+});
+
 // 부서와 직급 선택시 상태 변경
 partSelect.addEventListener("input", () => {
   if (partSelect.value === "") {
@@ -142,6 +184,8 @@ rankSelect.addEventListener("input", () => {
 document.querySelector("#signup_btn").addEventListener("click", () => {
   if (idCheck === false) {
     alert("올바른 아이디를 입력해주세요");
+  } else if (idDuplicateCheck === false) {
+    alert("아이디 중복확인을 해주세요");
   } else if (pwCheck === false) {
     alert("올바른 비밀번호를 입력해주세요");
   } else if (pwCorrectCheck === false) {
@@ -150,6 +194,8 @@ document.querySelector("#signup_btn").addEventListener("click", () => {
     alert("올바른 이름을 입력해주세요");
   } else if (emailCheck === false) {
     alert("올바른 이메일을 입력해주세요");
+  } else if (emailDuplicateCheck === false) {
+    alert("이메일 중복확인을 해주세요");
   } else if (partCheck === false) {
     alert("올바른 부서를 입력해주세요");
   } else if (rankCheck === false) {

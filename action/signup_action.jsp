@@ -12,7 +12,29 @@
   String partValue = request.getParameter("part_box");
   String rankValue = request.getParameter("rank_box");
   String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+// try {
+//   if (idValue.equals("") || idValue.length() < 6 || idValue.length() > 10) {
+//     throw "올바른 아이디를 입력해주섿요";
+//   } 
+//   if (pwValue.equals("") || pwValue.length() < 8 || pwValue.length() > 10) {
+//     throw "올바른 비밀번호를 입력해주세요");
+//   } if (pwCheckValue.equals("") || !pwValue.equals(pwCheckValue)) {
+//     throw "올바른 비밀번호를 입력해주세요");
+//   } else if (nameValue.equals("") || nameValue.length() < 2 || nameValue.length() > 10) {
+//     out.println("올바른 이름을 입력해주세요");
+//   } else if (emailValue.equals("") || emailValue.length() > 30 || !emailValue.matches(emailRegex)) {
+//     out.println("올바른 이메일을 입력해주세요");
+//   } else if (partValue.equals("")) {
+//     out.println("올바른 부서를 선택해주세요");
+//   } else if (rankValue.equals("")) {
+//     out.println("올바른 직급을 선택해주세요");
 
+// } catch(e){
+//   out.println(e);
+//   return;
+// }
+
+// class.forname("com.mysql.sksksksks")
   if (idValue.equals("") || idValue.length() < 6 || idValue.length() > 10) {
     out.println("올바른 아이디를 입력해주세요");
   } else if (pwValue.equals("") || pwValue.length() < 8 || pwValue.length() > 10) {
