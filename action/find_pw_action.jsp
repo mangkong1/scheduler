@@ -45,5 +45,4 @@
 
 <script>
   window.close();
-  location.href="../page/login.jsp"
 </script>

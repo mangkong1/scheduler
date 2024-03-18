@@ -150,6 +150,8 @@ document.querySelector("#write_btn").addEventListener("click", () => {
       dateBox.style.border = "3px solid var(--blue)";
       dateCheck = true;
     }
+
+    alert("1");
   });
 
   startTimeBox.addEventListener("input", () => {
