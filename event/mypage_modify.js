@@ -65,11 +65,15 @@ emailBox.addEventListener("input", () => {
     emailBox.style.border = "";
     emailCheckBtn.disabled = true;
     emailCheckBtn.style.backgroundColor = "var(--lightgray)";
+    emailCheckBtn.style.cursor = "";
+    emailCheckBtn.style.color = "black";
     emailCheck = false;
   } else if (!emailRegex.test(emailBox.value)) {
     emailBox.style.border = "3px solid var(--red)";
     emailCheckBtn.disabled = true;
     emailCheckBtn.style.backgroundColor = "var(--lightgray)";
+    emailCheckBtn.style.color = "black";
+    emailCheckBtn.style.cursor = "";
     emailCheck = false;
   } else {
     emailBox.style.border = "3px solid var(--blue)";

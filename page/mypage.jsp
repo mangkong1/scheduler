@@ -4,7 +4,6 @@
 <%@ page import='java.sql.PreparedStatement' %>
 <%@ page import='java.sql.ResultSet' %>
 
-
 <%
   String idx = (String) session.getAttribute("userIdx");
   String id = "";

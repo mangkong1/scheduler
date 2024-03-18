@@ -23,12 +23,12 @@
           </div>
 
           <div>
-            <input name="pw_box" class="input_pw_box" id="pw_box" type="text" placeholder="비밀번호" />
+            <input name="pw_box" class="input_pw_box" id="pw_box" type="password" placeholder="비밀번호" />
             <span class="constraint_message">비밀번호는 8~10자로 입력해주세요</span>
           </div>
 
           <div>
-            <input name="pw_check_box" class="input_pw_box" id="pw_check_box" type="text" placeholder="비밀번호 확인" />
+            <input name="pw_check_box" class="input_pw_box" id="pw_check_box" type="password" placeholder="비밀번호 확인" />
             <span class="constraint_message" id="pw_usable">비밀번호가 일치합니다</span>
             <span class="constraint_message" id="pw_unusable">비밀번호가 일치하지 않습니다</span>
           </div>
