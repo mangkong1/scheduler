@@ -27,7 +27,13 @@
     ResultSet result = query.executeQuery();
 
     if (!result.next()) {
-      out.println("로그인 실패!");
+      // out.println("로그인 실패!");
+    %>
+      <script>
+        alert('로그인 실패!');
+        location.href="../page/login.jsp"
+      </script>
+    <%
     } else {
     ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
     ArrayList<String> data = new ArrayList<String>();

@@ -163,7 +163,6 @@ partSelect.addEventListener("input", () => {
     partCheck = false;
   } else {
     partSelect.style.border = "3px solid var(--blue)";
-    partSelect.style.color = "black";
     partCheck = true;
   }
 });
@@ -175,7 +174,6 @@ rankSelect.addEventListener("input", () => {
     rankCheck = false;
   } else {
     rankSelect.style.border = "3px solid var(--blue)";
-    rankSelect.style.color = "black";
     rankCheck = true;
   }
 });
