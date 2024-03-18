@@ -28,11 +28,12 @@
     ResultSet result = query.executeQuery();
 
     if (result.next()) {
+      session.setAttribute("userIdx", result.getString("idx"));
+
       Calendar cal = Calendar.getInstance();
       int currentYear = cal.get(Calendar.YEAR);
       int currentMonth = cal.get(Calendar.MONTH) + 1;
 
-      session.setAttribute("userIdx", result.getString("idx"));
       response.sendRedirect("../page/scheduler.jsp?year=" + currentYear + "&month=" + currentMonth);
     } else {
       out.println("<script>");
@@ -49,6 +50,6 @@
 %>
 
 <%-- <script>
-  let session = <%=userIdx%>;
+  let session = document.getElementById("userIdx").value;
   console.log(session);
 </script> --%>
