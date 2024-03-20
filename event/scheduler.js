@@ -198,9 +198,9 @@ contentBox.addEventListener("input", () => {
 
 registerBtn.addEventListener("click", () => {
   let [year, month, day] = dateBox.value.split("-");
-  let yearValue = parseInt(year);
-  let monthValue = parseInt(month);
-  let dayValue = parseInt(day);
+  let yearValue = year;
+  let monthValue = month;
+  let dayValue = day;
   let startTimeValue = startTimeBox.value;
   let endTimeValue = endTimeBox.value;
   let contentValue = contentBox.value;
