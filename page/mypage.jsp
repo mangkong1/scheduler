@@ -74,10 +74,11 @@
         </table>
         
         <div id="mypage_btn_container">
-          <input id="mypage_modify_btn" type="submit" value="수정" onclick="location.href='../page/mypage_modify.jsp'">
+          <input id="mypage_modify_btn" type="submit" value="수정">
           <input id="delete_btn" type="submit" value="탈퇴">
         </div>
       </section>
     </main>
+    <script src="../event/mypage.js"></script>
   </body>
 </html>

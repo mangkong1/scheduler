@@ -47,7 +47,7 @@
         </div>
       </section>
     </main>
-    <script src="../event/scheduler.js"></script>
     <div id="back_container"></div>
+    <script src="../event/scheduler.js"></script>
   </body>
 </html>
