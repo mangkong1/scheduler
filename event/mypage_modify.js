@@ -85,6 +85,11 @@ emailBox.addEventListener("input", () => {
 });
 
 document.querySelector("#register_btn").addEventListener("click", () => {
+  let pwValue = pwBox.value;
+  let nameValue = nameBox.value;
+  let emailValue = emailBox.value;
+  let partValue = partSelect.value;
+  let rankValue = rankSelect.value;
   if (pwCheck === false) {
     alert("올바른 비밀번호를 입력해주세요");
   } else if (pwCorrectCheck === false) {
@@ -94,8 +99,13 @@ document.querySelector("#register_btn").addEventListener("click", () => {
   } else if (emailCheck === false) {
     alert("올바른 이메일을 입력해주세요");
   } else {
-    alert("내 정보가 수정되었습니다");
-    location.href = "login.jsp";
+    let url = "../action/mypage_modify_action.jsp?";
+    url += "pw_box=" + pwValue;
+    url += "&name_box=" + nameValue;
+    url += "&email_box=" + emailValue;
+    url += "&part_select=" + partValue;
+    url += "&rank_select=" + rankValue;
+    window.open(url, "_self");
   }
 });
 

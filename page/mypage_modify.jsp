@@ -67,14 +67,16 @@
           <input class="check_btn" id="email_check_btn" type="submit" value="중복확인" />
         </div>
         
-        <select class="select_box" id="part_select" value="<%= part %>">
+        <select class="select_box" id="part_select">
           <%-- selected disabled hidden에서 필요한 속성만 꺼냄 --%>
+          <option selected disabled hidden><%= part %></option>
           <option disabled>부서</option>
           <option>기획팀</option>
           <option>디자인팀</option>
         </select>
         
-        <select class="select_box" id="rank_select" value="<%= rank %>">
+        <select class="select_box" id="rank_select">
+          <option selected disabled hidden><%= rank %></option>
           <option disabled>직급</option>
           <option>팀장</option>
           <option>팀원</option>
