@@ -60,9 +60,9 @@ for (i = 0; i < arr.length; i++) {
   const listupContent = document.createElement("article");
   listupContent.id = i;
   const name = createContent("name", arr[i].name);
-  const startTime = createContent("start_time", arr[i].start_time);
-  const endTime = createContent("end_time", arr[i].end_time);
-  const content = createContent("content", arr[i].content);
+  const startTime = createContent("start_time", "<%= start_time %>");
+  const endTime = createContent("end_time", "<%= end_time %>");
+  const content = createContent("content", "<%= content %>");
   const btnContainer = document.createElement("div");
   btnContainer.classList = "btn_container";
   const modifyBtn = createButton("modify_btn", "submit", "수정"); // 확인 버튼 클릭시의 조건문이
@@ -101,24 +101,9 @@ for (i = 0; i < arr.length; i++) {
       const content = article.querySelector("#content").textContent;
       const confirmBtn = createButton("confirm_btn", "submit", "확인");
       const cancelBtn = createButton("cancel_btn", "submit", "취소");
-      const startTimeInput = createInput(
-        "start_time_input",
-        "text",
-        startTime,
-        "시작 시간"
-      );
-      const endTimeInput = createInput(
-        "end_time_input",
-        "text",
-        endTime,
-        "종료 시간"
-      );
-      const contentInput = createInput(
-        "content_input",
-        "text",
-        content,
-        "내용"
-      );
+      const startTimeInput = createInput("start_time_input", "text", startTime, "시작 시간");
+      const endTimeInput = createInput("end_time_input", "text", endTime, "종료 시간");
+      const contentInput = createInput("content_input", "text", content, "내용");
 
       const timeRegex = /([0-1][0-9]|2[0-3]):([0-5][0-9])/;
       let startTimeCheck = true;
@@ -190,18 +175,9 @@ for (i = 0; i < arr.length; i++) {
 
       // 확인 버튼 클릭시 입력값 content로 변경
       confirmBtn.addEventListener("click", () => {
-        const newStartTime = createContent(
-          "start_time",
-          article.querySelector("#start_time_input").value
-        );
-        const newEndTime = createContent(
-          "end_time",
-          article.querySelector("#end_time_input").value
-        );
-        const newContent = createContent(
-          "content",
-          article.querySelector("#content_input").value
-        );
+        const newStartTime = createContent("start_time", article.querySelector("#start_time_input").value);
+        const newEndTime = createContent("end_time", article.querySelector("#end_time_input").value);
+        const newContent = createContent("content", article.querySelector("#content_input").value);
 
         startTimeInput.replaceWith(newStartTime); // input 요소를 content로 교체
         endTimeInput.replaceWith(newEndTime);
