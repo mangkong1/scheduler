@@ -43,13 +43,13 @@ function setCalenderList(year, month) {
     dayContainer.textContent = i;
     dayContainer.classList.add("day");
     dayContainer.dataset.year = selectYear;
-    dayContainer.dataset.month = parseInt(monthElement.value); // 클래스는 속성을 넣거나 특정작업 수행용, dataset은 동적 작업용
-    dayContainer.dataset.date = i; // 클래스로 년,월,일을 했을 때 3월3일같은 경우 겹쳐버린다, 따라서 dataset사용
+    dayContainer.dataset.month = ("0" + monthElement.value.slice(0, -1)).slice(-2); // 클래스는 속성을 넣거나 특정작업 수행용, dataset은 동적 작업용
+    dayContainer.dataset.day = ("0" + i).slice(-2); // 클래스로 년,월,일을 했을 때 3월3일같은 경우 겹쳐버린다, 따라서 dataset사용
 
     calenderList.appendChild(dayContainer);
 
     dayContainer.addEventListener("click", () => {
-      window.open(`listup_popup.jsp?year=${selectYear}&month=${parseInt(monthElement.value)}&day=${i}`, "", "width=600, height=700");
+      window.open(`listup_popup.jsp?year=${dayContainer.dataset.year}&month=${dayContainer.dataset.month}&day=${dayContainer.dataset.day}`, "", "width=600, height=700");
     });
   }
   today();
