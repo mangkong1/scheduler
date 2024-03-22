@@ -6,6 +6,7 @@
 <%@ page import='java.util.ArrayList' %> 
 
 <%
+  String userIdx = (String) session.getAttribute("userIdx");
   String yearValue = request.getParameter("year");
   String monthValue = request.getParameter("month");
   String dayValue = request.getParameter("day");
@@ -13,11 +14,12 @@
   String start_time =  "";
   String end_time =  "";
   String content =  "";
+  String name = "";
   
   Class.forName("com.mysql.jdbc.Driver");
   Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/calender","stageus","1234");
 
-  String sql = "SELECT * FROM work WHERE date=?";
+  String sql = "SELECT work.*, user.name FROM work JOIN user ON work.user_idx = user.idx WHERE work.date=?";
   PreparedStatement query = connect.prepareStatement(sql);
   query.setString(1, dateValue);
 
@@ -27,9 +29,11 @@
 
   while (result.next()) {
     ArrayList<String> data = new ArrayList<String>();
+    name = result.getString("name");
     start_time = result.getString("start_time");
     end_time = result.getString("end_time");
     content = result.getString("content");
+    data.add("\"" + name + "\"");
     data.add("\"" + start_time + "\""); // 여기에서 string처리 하지 않으면 날데이터로 바뀌어서 날아감, 읽을 수 없어짐 , 강제적으로 큰따옴표 붙여줌
     data.add("\"" + end_time + "\""); // 여기 잘 기억하기!
     data.add("\"" + content + "\"");
@@ -70,18 +74,73 @@
         listupText.classList.add("article_content");
         return listupText;
       }
-
-      // 데이터를 반복하여 HTML 요소를 동적으로 생성
-      for(i = 0; i < listData.length; i++) {
-        let startTime = createContent("start_time", listData[i][0]);
-        let endTime = createContent("end_time", listData[i][1]);
-        let content = createContent("content", listData[i][2]);
-
-        listup.appendChild(startTime);
-        listup.appendChild(endTime);
-        listup.appendChild(content);
+      
+      function createInput(id, type, value, placeholder) {
+        const input = document.createElement("input");
+        input.id = id;
+        input.type = type;
+        input.value = value;
+        input.placeholder = placeholder;
+        return input;
       }
 
+      function createButton(id, type, value) {
+        const button = document.createElement("input");
+        button.id = id;
+        button.type = type;
+        button.value = value;
+        return button;
+      }
+
+      // 데이터를 반복하여 HTML 요소를 동적으로 생성
+      for(let i = 0; i < listData.length; i++) {
+        const article = document.createElement("article");
+        const listName = '<%= name %>';
+        article.classList.add(listData[i][0]);
+        
+        const name = createContent("name", listData[i][0])
+        const startTime = createContent("start_time", listData[i][1]);
+        const endTime = createContent("end_time", listData[i][2]);
+        const content = createContent("content", listData[i][3]);
+
+        article.appendChild(name);
+        article.appendChild(startTime);
+        article.appendChild(endTime);
+        article.appendChild(content);
+        article.appendChild(document.createElement("hr"));
+        
+        if (article.classList.contains(listName)) {
+          const btnContainer = document.createElement("div");
+          const modifyBtn = createButton("modify_btn", "submit", "수정"); // 확인 버튼 클릭시의 조건문이
+          const deleteBtn = createButton("delete_btn", "submit", "삭제");
+          btnContainer.classList.add("btn_container");
+          btnContainer.appendChild(modifyBtn);
+          btnContainer.appendChild(deleteBtn);
+          article.appendChild(btnContainer);
+        }
+
+        listup.appendChild(article);
+      }
+
+      const colorMap = {};
+
+      // article의 클래스 이름을 기반으로 색상을 할당합니다.
+      listup.querySelectorAll("article").forEach((e) => {
+        const articleClass = e.classList[0]; // 첫 번째 클래스 이름을 가져옵니다.
+        // 해당 클래스 이름이 색상 맵에 이미 존재하는지 확인합니다.
+        if (!colorMap[articleClass]) {
+          // 새로운 클래스 이름에 대한 색상을 생성합니다.
+          colorMap[articleClass] = "#" + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, "0");
+        }
+        console.log(colorMap);
+
+        e.querySelectorAll("h1").forEach((h1) => {
+          h1.style.color = colorMap[articleClass]; // 클래스 이름에 해당하는 색상을 적용합니다.
+        });
+      });
+        
+        // article의 자식 h1 태그에 색상을 적용합니다.
+      
     </script>
   </body>
 </html>
