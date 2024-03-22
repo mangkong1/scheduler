@@ -15,9 +15,19 @@
   String end_time =  "";
   String content =  "";
   String name = "";
+  String userName = "";
   
   Class.forName("com.mysql.jdbc.Driver");
   Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/calender","stageus","1234");
+
+  String userSql = "SELECT name from user WHERE idx=?";
+  PreparedStatement userQuery = connect.prepareStatement(userSql);
+  userQuery.setString(1, userIdx);
+
+  ResultSet userResult = userQuery.executeQuery();
+  while (userResult.next()) {
+    userName = userResult.getString("name");
+  }
 
   String sql = "SELECT work.*, user.name FROM work JOIN user ON work.user_idx = user.idx WHERE work.date=?";
   PreparedStatement query = connect.prepareStatement(sql);
@@ -95,7 +105,8 @@
       // 데이터를 반복하여 HTML 요소를 동적으로 생성
       for(let i = 0; i < listData.length; i++) {
         const article = document.createElement("article");
-        const listName = '<%= name %>';
+        const userName = '<%= userName %>';
+        console.log(userName);
         article.classList.add(listData[i][0]);
         
         const name = createContent("name", listData[i][0])
@@ -109,7 +120,7 @@
         article.appendChild(content);
         article.appendChild(document.createElement("hr"));
         
-        if (article.classList.contains(listName)) {
+        if (article.classList.contains(userName)) {
           const btnContainer = document.createElement("div");
           const modifyBtn = createButton("modify_btn", "submit", "수정"); // 확인 버튼 클릭시의 조건문이
           const deleteBtn = createButton("delete_btn", "submit", "삭제");
@@ -127,21 +138,15 @@
       // article의 클래스 이름을 기반으로 색상을 할당합니다.
       listup.querySelectorAll("article").forEach((e) => {
         const articleClass = e.classList[0]; // 첫 번째 클래스 이름을 가져옵니다.
-        // 해당 클래스 이름이 색상 맵에 이미 존재하는지 확인합니다.
-        if (!colorMap[articleClass]) {
-          // 새로운 클래스 이름에 대한 색상을 생성합니다.
+        
+        if (!colorMap[articleClass]) { // 해당 클래스 이름이 색상 맵에 이미 존재하는지 확인합니다.
           colorMap[articleClass] = "#" + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, "0");
         }
-        console.log(colorMap);
 
         e.querySelectorAll("h1").forEach((h1) => {
           h1.style.color = colorMap[articleClass]; // 클래스 이름에 해당하는 색상을 적용합니다.
         });
       });
-        
-        // article의 자식 h1 태그에 색상을 적용합니다.
-      
     </script>
   </body>
 </html>
-

@@ -61,8 +61,7 @@ function today() {
   day.forEach((e) => {
     const year = parseInt(e.dataset.year);
     const month = parseInt(e.dataset.month);
-    const date = parseInt(e.dataset.date);
-
+    const date = parseInt(e.dataset.day);
     if (year === currentYear && month === currentMonth && date === currentDate) {
       e.style.border = "3px solid var(--blue)";
     }
