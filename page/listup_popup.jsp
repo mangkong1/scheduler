@@ -16,6 +16,7 @@
   String content =  "";
   String name = "";
   String userName = "";
+  String work_idx = "";
   
   Class.forName("com.mysql.jdbc.Driver");
   Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/calender","stageus","1234");
@@ -39,6 +40,7 @@
 
   while (result.next()) {
     ArrayList<String> data = new ArrayList<String>();
+    work_idx = result.getString("idx");
     name = result.getString("name");
     start_time = result.getString("start_time");
     end_time = result.getString("end_time");
@@ -52,7 +54,8 @@
   
   if (list.isEmpty()) {
     out.println("<script>");
-    out.println("alert('없음')");
+    out.println("alert('일정이 없습니다')");
+    out.println("window.close()");
     out.println("</script>");
   }
 %>
@@ -102,6 +105,11 @@
         return button;
       }
 
+      function deletePopup() {
+        let workIdx = <%= work_idx %>
+        window.open("../action/popup_delete_action.jsp?work_idx=" + workIdx);
+      }
+
       // 데이터를 반복하여 HTML 요소를 동적으로 생성
       for(let i = 0; i < listData.length; i++) {
         const article = document.createElement("article");
@@ -127,6 +135,8 @@
           btnContainer.classList.add("btn_container");
           btnContainer.appendChild(modifyBtn);
           btnContainer.appendChild(deleteBtn);
+
+          deleteBtn.addEventListener("click", deletePopup);
           article.appendChild(btnContainer);
         }
 
