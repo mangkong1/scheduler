@@ -1,6 +1,5 @@
 let nameBox = document.querySelector("#name_box");
 let emailBox = document.querySelector("#email_box");
-
 nameCheck = false;
 emailCheck = false;
 
@@ -42,3 +41,5 @@ document.querySelector("#find_id_btn").addEventListener("click", () => {
     alert(e);
   }
 });
+
+//지워도됨

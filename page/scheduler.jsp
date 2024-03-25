@@ -1,4 +1,27 @@
-<%@ page language='java' contentType='text/html' pageEncoding='utf-8' %>
+<%@ page language='java' contentType='text/html' pageEncoding='utf-8' %> 
+<%@ page import='java.sql.DriverManager' %>
+<%@ page import='java.sql.Connection' %>
+<%@ page import='java.sql.PreparedStatement' %>
+<%@ page import='java.sql.ResultSet' %> 
+
+<%
+  String yearValue = request.getParameter("year");
+  String monthValue = request.getParameter("month");
+
+  Class.forName("com.mysql.jdbc.Driver");
+  Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/calender","stageus","1234");
+
+  String datePattern = yearValue + "-" + monthValue + "%";
+  String sql = "SELECT * FROM work WHERE date LIKE ?";
+  PreparedStatement query = connect.prepareStatement(sql);
+  query.setString(1, datePattern);
+
+  ResultSet result = query.executeQuery();
+  int eventCount = 0;
+  while (result.next()) {
+    eventCount++;
+}%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,8 +38,8 @@
       <img id="logo_img" src="../img/calender_logo.png" alt="로고" />
       
       <div id="header_btn_container">
-        <input class="header_btn" id="logout_btn" type="submit" value="로그아웃" />
-        <button class="header_btn" id="mypage_btn">마이페이지</button>
+        <button class="header_btn" id="logout_btn" onClick="logout()">로그아웃</button>
+        <button class="header_btn" id="mypage_btn" onClick="moveMypage()">마이페이지</button>
         <button class="header_btn" id="write_btn">글쓰기</button>
       </div>
     </header>
@@ -24,8 +47,8 @@
     <main>
       <section>
         <article id="calender_modify_container">
-          <button id="prev_year_btn"></button>
-          <button id="next_year_btn"></button>
+          <button id="prev_year_btn" onClick="setPrevYear()"></button>
+          <button id="next_year_btn" onClick="setNextYear()"></button>
           <h3 id="year"></h3>
           <select id="month"></select>
         </article>
@@ -49,5 +72,8 @@
     </main>
     <div id="back_container"></div>
     <script src="../event/scheduler.js"></script>
+    <script>
+      let eventCount = <%= eventCount %>;
+    </script>
   </body>
 </html>

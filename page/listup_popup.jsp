@@ -106,15 +106,19 @@
       }
 
       function deletePopup() {
-        let workIdx = <%= work_idx %>
+        let workIdx = <%= work_idx %>;
         window.open("../action/popup_delete_action.jsp?work_idx=" + workIdx);
+      }
+
+      function modifyPopup() {
+        let workIdx = <%= work_idx %>;
+        window.open("../action/popup_modify_action.jsp?work_idx=" + workIdx);
       }
 
       // 데이터를 반복하여 HTML 요소를 동적으로 생성
       for(let i = 0; i < listData.length; i++) {
         const article = document.createElement("article");
         const userName = '<%= userName %>';
-        console.log(userName);
         article.classList.add(listData[i][0]);
         
         const name = createContent("name", listData[i][0])
@@ -137,6 +141,7 @@
           btnContainer.appendChild(deleteBtn);
 
           deleteBtn.addEventListener("click", deletePopup);
+          modifyBtn.addEventListener("click", modifyPopup);
           article.appendChild(btnContainer);
         }
 

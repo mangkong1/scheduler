@@ -9,25 +9,31 @@
   String pwCheckValue = request.getParameter("pw_check_box");
   String nameValue = request.getParameter("name_box");
   String emailValue = request.getParameter("email_box");
-  String partValue = request.getParameter("part_box");
-  String rankValue = request.getParameter("rank_box");
-  String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+  String partValue = request.getParameter("part_select");
+  String rankValue = request.getParameter("rank_select");
 
-  if (!idValue.matches("^.{6,10}$")) {
-    out.println("올바른 아이디를 입력해주세요");
-  } else if (!pwValue.matches("^.{8,10}$")) {
-    out.println("올바른 비밀번호를 입력해주세요");
-  } else if (!pwValue.equals(pwCheckValue)) {
-    out.println("올바른 비밀번호를 입력해주세요");
-  } else if (!nameValue.matches("^[가-힣a-zA-Z]{2,10}$")) {
-    out.println("올바른 이름을 입력해주세요");
-  } else if (!emailValue.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
-    out.println("올바른 이메일을 입력해주세요");
-  } else if (partValue.equals("")) {
-    out.println("올바른 부서를 선택해주세요");
-  } else if (rankValue.equals("")) {
-    out.println("올바른 직급을 선택해주세요");
-  } else {
+  try {
+    if (!idValue.matches("^.{6,10}$")) {
+      throw new Error("올바른 아이디를 입력해주세요");
+    }
+    if (!pwValue.matches("^.{8,10}$")) {
+      throw new Error("올바른 비밀번호를 입력해주세요");
+    }
+    if (!pwValue.equals(pwCheckValue)) {
+      throw new Error("올바른 비밀번호를 입력해주세요");
+    }
+    if (!nameValue.matches("^[a-zA-Z가-힣0-9]{2,10}$")) {
+      throw new Error("올바른 이름을 입력해주세요");
+    }
+    if (!emailValue.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+      throw new Error("올바른 이메일을 입력해주세요");
+    }
+    if (partValue.equals("")) {
+      throw new Error("올바른 부서를 선택해주세요");
+    }
+    if (rankValue.equals("")) {
+      throw new Error("올바른 직급을 선택해주세요");
+    }
     Class.forName("com.mysql.jdbc.Driver");
     Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/calender","stageus","1234");
 
@@ -39,9 +45,14 @@
     query.setString(4, emailValue);
     query.setString(5, partValue);
     query.setString(6, rankValue);
-
     query.executeUpdate();
 
     response.sendRedirect("../page/login.jsp");
+
+    out.println("<script>");
+    out.println("window.close();");
+    out.println("</script>");
+  } catch (e) {
+    alert(e.message);
   }
 %>

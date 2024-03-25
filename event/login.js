@@ -1,6 +1,6 @@
 // 만약 전역변수로 선언한다면 html이 처음 실행될 때 값이 지정되므로
 // 빈 값으로 나온다 (console.log하면 금방 알 수 있었음!)
-document.querySelector("#login_btn").addEventListener("click", () => {
+function login() {
   let idValue = document.querySelector("#id_box").value;
   let pwValue = document.querySelector("#pw_box").value;
 
@@ -12,7 +12,7 @@ document.querySelector("#login_btn").addEventListener("click", () => {
   } else {
     window.open("../action/login_action.jsp?id_box=" + idValue + "&pw_box=" + pwValue, "_self");
   }
-});
+}
 
 document.querySelector("#move_find_id").addEventListener("click", () => {
   location.href = "find_id.jsp";
@@ -25,3 +25,5 @@ document.querySelector("#move_find_pw").addEventListener("click", () => {
 document.querySelector("#move_signup").addEventListener("click", () => {
   location.href = "../page/signup.jsp";
 });
+
+//지워도됨
