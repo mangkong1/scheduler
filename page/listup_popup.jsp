@@ -75,10 +75,10 @@
       <section id="listup">
       </section>
     </main>
-    <%-- <script src="../event/listup_popup.js"></script> --%>
     <script>
       const listData = <%= list %>; // ArrayList를 JavaScript 배열로 전달
       const listup = document.querySelector("#listup");
+      console.log(listData);
       
       function createContent(id, text) {
         const listupText = document.createElement("h1");

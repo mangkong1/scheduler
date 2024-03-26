@@ -47,24 +47,24 @@
         <h1 id="mypage_modify_title">마이페이지</h1>
 
         <div>
-          <input class="input_pw_box" id="pw_box" type="password" placeholder="비밀번호" value="<%= pw %>"/>
+          <input class="input_pw_box" id="pw_box" type="password" placeholder="비밀번호" value="<%= pw %>" onInput="checkPw()"/>
           <span class="constraint_message">비밀번호는 8~10자로 입력해주세요</span>
         </div>
 
         <div>
-          <input class="input_pw_box" id="pw_check_box" type="password" placeholder="비밀번호 확인" value="<%= pw %>"/>
+          <input class="input_pw_box" id="pw_check_box" type="password" placeholder="비밀번호 확인" value="<%= pw %>" onInput="checkPw()"/>
           <span class="constraint_message" id="pw_usable">비밀번호가 일치합니다</span>
           <span class="constraint_message" id="pw_unusable">비밀번호가 일치하지 않습니다</span>
         </div>        
 
         <div>
-          <input class="input_box" id="name_box" type="text" placeholder="이름" value="<%= name %>"/>
+          <input class="input_box" id="name_box" type="text" placeholder="이름" value="<%= name %>" onInput="checkName()"/>
           <span class="constraint_message">이름은 2~10자로 입력해주세요</span>
         </div>
 
         <div class="check_container">
-          <input class="input_box_small" id="email_box" type="text" placeholder="이메일" value="<%= email %>"/>
-          <input class="check_btn" id="email_check_btn" type="submit" value="중복확인" />
+          <input class="input_box_small" id="email_box" type="text" placeholder="이메일" value="<%= email %>" onInput="checkEmail()"/>
+          <input class="check_btn" id="email_check_btn" type="button" value="중복확인" onClick="checkDuplicateEmail()"/>
         </div>
         
         <select class="select_box" id="part_select">
@@ -83,8 +83,8 @@
         </select>
         
         <div id="mypage_btn_container">
-          <input id="register_btn" type="submit" value="등록" />
-          <button id="cancel_btn">취소</button>
+          <button id="register_btn" onClick="register()">등록</button>
+          <button id="cancel_btn" onClick="cancel()">취소</button>
         </div>
       </section>
     </main>

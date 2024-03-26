@@ -74,12 +74,20 @@
         </table>
         
         <div id="mypage_btn_container">
-          <input id="mypage_modify_btn" type="submit" value="수정">
-          <input id="delete_btn" type="submit" value="탈퇴">
+          <button id="mypage_modify_btn" onClick="modifyMypage()">수정</button>
+          <button id="delete_btn" onClick="deleteMypage()">삭제</button>
         </div>
       </section>
     </main>
-    <script src="../event/mypage.js"></script>
+    <script>
+      function modifyMypage() {
+        location.href = "../page/mypage_modify.jsp";
+      };
+
+      function deleteMypage() {
+        window.open("../action/mypage_delete_action.jsp");
+      };
+    </script>
   </body>
 </html>
 

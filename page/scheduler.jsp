@@ -8,6 +8,8 @@
 <%
   String yearValue = request.getParameter("year");
   String monthValue = request.getParameter("month");
+  out.println(yearValue);
+  out.println(monthValue);
 
   // monthValue를 두 자리 숫자로 변환합니다.
   String formattedMonthValue = String.format("%02d", Integer.parseInt(monthValue));
@@ -29,7 +31,6 @@
     String date = result.getString(1); // 여기서 date 값을 출력하거나 필요한 작업을 수행합니다.
     list.add("\"" + date + "\""); // 데이터를 1차원 배열에 추가
   }
-
 %>
 
 <!DOCTYPE html>
@@ -90,6 +91,7 @@
       let selectMonth = new Date().getMonth() + 1;
       let selectDate = new Date().getDate();
       let list = <%= list %>;
+      console.log(list);
 
       function setCalenderList(year, month) {
         calenderList.innerHTML = ""; // 초기화하지 않으면 날짜출력이 쌓임
@@ -133,7 +135,7 @@
 
           const eventCountContainer = document.createElement("div");
           eventCountContainer.id = dayContainerYear + "-" + dayContainerMonth + "-" + dayContainerDay;
-          for(let j = 0; j < list.length; j++) {
+          for(let j = 0; j <= list.length; j++) {
             if (eventCountContainer.id === list[j]) {
               eventCountContainer.classList.add("event_count");
               eventCountContainer.textContent++;
@@ -145,8 +147,6 @@
             window.open("listup_popup.jsp?year=" + dayContainer.dataset.year + "&month=" + dayContainer.dataset.month + "&day=" + dayContainer.dataset.day, "", "width=600, height=700");
           }); 
         }
-
-   
       }
     </script>
     <script src="../event/scheduler.js"></script>

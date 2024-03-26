@@ -23,13 +23,7 @@
   }
 
   out.println("<script>");
-  out.println("if(window.opener) {");
-  out.println("  window.opener.postMessage({ isEmailDuplicate: " + isEmailDuplicate + " }, '*');");
-  out.println("}");
+  out.println("alert('이메일을 사용가능합니다')");
   out.println("window.close();"); // 창 닫기
   out.println("</script>");
 %>
-
-<script>
-  window.close();
-</script>

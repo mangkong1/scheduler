@@ -7,7 +7,6 @@ const emailBox = document.querySelector("#email_box");
 const emailCheckBtn = document.querySelector("#email_check_btn");
 const partSelect = document.querySelector("#part_select");
 const rankSelect = document.querySelector("#rank_select");
-const signupForm = document.querySelector("#signup_form");
 let idCheck = false;
 let pwCheck = false;
 let pwCorrectCheck = false;

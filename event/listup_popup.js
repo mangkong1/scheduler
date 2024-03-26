@@ -215,3 +215,5 @@ listup.querySelectorAll("article").forEach((article) => {
     e.style.color = randomColor;
   });
 });
+
+//지워도됨
