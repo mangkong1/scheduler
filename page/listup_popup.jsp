@@ -30,7 +30,7 @@
     userName = userResult.getString("name");
   }
 
-  String sql = "SELECT work.*, user.name FROM work JOIN user ON work.user_idx = user.idx WHERE work.date=?";
+  String sql = "SELECT work.*, user.name FROM work JOIN user ON work.user_idx = user.idx WHERE work.date=? ORDER BY start_time ASC";
   PreparedStatement query = connect.prepareStatement(sql);
   query.setString(1, dateValue);
 

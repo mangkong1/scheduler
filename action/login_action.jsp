@@ -48,8 +48,8 @@
     out.println("</script>");
   }
 %>
-
-<%-- <script>
-  let session = document.getElementById("userIdx").value;
+<%-- 
+<script>
+  let session = <%=currentMonth%>;
   console.log(session);
 </script> --%>

@@ -8,8 +8,6 @@ const emailCheckBtn = document.querySelector("#email_check_btn");
 const partSelect = document.querySelector("#part_select");
 const rankSelect = document.querySelector("#rank_select");
 const signupForm = document.querySelector("#signup_form");
-idCheckBtn.disabled = true;
-emailCheckBtn.disabled = true;
 let idCheck = false;
 let pwCheck = false;
 let pwCorrectCheck = false;
@@ -19,6 +17,8 @@ let partCheck = false;
 let rankCheck = false;
 let idDuplicateCheck = false;
 let emailDuplicateCheck = false;
+idCheckBtn.disabled = true;
+emailCheckBtn.disabled = true;
 
 // 아이디 중복확인(프론트 예외처리)
 function checkId() {
