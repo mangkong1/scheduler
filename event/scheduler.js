@@ -1,17 +1,17 @@
 function setPrevYear() {
   selectYear--;
-  setCalenderList(selectYear, selectMonth);
   year.textContent = selectYear + "년";
   history.pushState(null, "", `scheduler.jsp?year=${selectYear}&month=${selectMonth}`);
   today();
+  setCalenderList(selectYear, selectMonth); // 연도가 변경되면 해당 연도에 맞는 캘린더 리스트를 렌더링
 }
 
 function setNextYear() {
   selectYear++;
-  setCalenderList(selectYear, selectMonth);
   year.textContent = selectYear + "년";
   history.pushState(null, "", `scheduler.jsp?year=${selectYear}&month=${selectMonth}`);
   today();
+  setCalenderList(selectYear, selectMonth); // 연도가 변경되면 해당 연도에 맞는 캘린더 리스트를 렌더링
 }
 
 function setMonth() {
@@ -57,4 +57,5 @@ window.onload = () => {
   year.textContent = selectYear + "년";
   setMonth();
   setCalenderList(selectYear, selectMonth);
+  today();
 };

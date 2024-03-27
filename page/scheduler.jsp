@@ -8,12 +8,8 @@
 <%
   String yearValue = request.getParameter("year");
   String monthValue = request.getParameter("month");
-  out.println(yearValue);
-  out.println(monthValue);
-
-  // monthValue를 두 자리 숫자로 변환합니다.
-  String formattedMonthValue = String.format("%02d", Integer.parseInt(monthValue));
-  String datePattern = yearValue + "-" + formattedMonthValue + "%";
+  String formatMonthValue = String.format("%02d", Integer.parseInt(monthValue));
+  String datePattern = yearValue + "-" + formatMonthValue + "%";
 
   Class.forName("com.mysql.jdbc.Driver");
   Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/calender","stageus","1234");
@@ -23,10 +19,8 @@
   query.setString(1, datePattern);
 
   ResultSet result = query.executeQuery();
-  result.next();
-  result.getString(1);
-
   ArrayList<String> list = new ArrayList<String>(); // 1차원 배열 선언
+  
   while (result.next()) {
     String date = result.getString(1); // 여기서 date 값을 출력하거나 필요한 작업을 수행합니다.
     list.add("\"" + date + "\""); // 데이터를 1차원 배열에 추가

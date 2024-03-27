@@ -33,6 +33,7 @@
       Calendar cal = Calendar.getInstance();
       int currentYear = cal.get(Calendar.YEAR);
       int currentMonth = cal.get(Calendar.MONTH) + 1;
+      String currentMonthStr = String.format("%02d", currentMonth); // month 두자리숫자로 바꿔줌
 
       response.sendRedirect("../page/scheduler.jsp?year=" + currentYear + "&month=" + currentMonth);
     } else {
@@ -48,8 +49,3 @@
     out.println("</script>");
   }
 %>
-<%-- 
-<script>
-  let session = <%=currentMonth%>;
-  console.log(session);
-</script> --%>
