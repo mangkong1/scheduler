@@ -6,6 +6,11 @@
 <%@ page import='java.util.ArrayList' %> 
 
 <%
+  String idx = (String) session.getAttribute("userIdx");
+  if (idx =="" && idx == null) {
+    
+  }
+
   String yearValue = request.getParameter("year");
   String monthValue = request.getParameter("month");
   String formatMonthValue = String.format("%02d", Integer.parseInt(monthValue));
@@ -20,7 +25,7 @@
 
   ResultSet result = query.executeQuery();
   ArrayList<String> list = new ArrayList<String>(); // 1차원 배열 선언
-  
+
   while (result.next()) {
     String date = result.getString(1); // 여기서 date 값을 출력하거나 필요한 작업을 수행합니다.
     list.add("\"" + date + "\""); // 데이터를 1차원 배열에 추가
@@ -54,7 +59,7 @@
         <article id="calender_modify_container">
           <button id="prev_year_btn" onClick="setPrevYear()"></button>
           <button id="next_year_btn" onClick="setNextYear()"></button>
-          <h3 id="year"></h3>
+          <h3 id="year"><%= yearValue %></h3>
           <select id="month"></select>
         </article>
 
@@ -119,12 +124,14 @@
           const dayContainer = document.createElement("div");
           dayContainer.textContent = i;
           dayContainer.classList.add("day");
+
           let dayContainerYear = selectYear;
           let dayContainerMonth = ("0" + selectMonth).slice(-2);
           let dayContainerDay = ("0" + i).slice(-2);
           dayContainer.dataset.year = dayContainerYear;
           dayContainer.dataset.month = dayContainerMonth; // 클래스는 속성을 넣거나 특정작업 수행용, dataset은 동적 작업용
-          dayContainer.dataset.day = dayContainerDay; // 클래스로 년,월,일을 했을 때 3월3일같은 경우 겹쳐버린다, 따라서 dataset사용
+          dayContainer.dataset.day = dayContainerDay;
+           // 클래스로 년,월,일을 했을 때 3월3일같은 경우 겹쳐버린다, 따라서 dataset사용
           calenderList.appendChild(dayContainer);
 
           const eventCountContainer = document.createElement("div");

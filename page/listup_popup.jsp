@@ -45,6 +45,7 @@
     start_time = result.getString("start_time");
     end_time = result.getString("end_time");
     content = result.getString("content");
+    data.add("\"" + work_idx + "\"");
     data.add("\"" + name + "\"");
     data.add("\"" + start_time + "\""); // 여기에서 string처리 하지 않으면 날데이터로 바뀌어서 날아감, 읽을 수 없어짐 , 강제적으로 큰따옴표 붙여줌
     data.add("\"" + end_time + "\""); // 여기 잘 기억하기!
@@ -75,56 +76,23 @@
       <section id="listup">
       </section>
     </main>
+    <script src="../event/popup_modify.js"></script>
     <script>
       const listData = <%= list %>; // ArrayList를 JavaScript 배열로 전달
       const listup = document.querySelector("#listup");
       console.log(listData);
-      
-      function createContent(id, text) {
-        const listupText = document.createElement("h1");
-        listupText.id = id;
-        listupText.textContent = text;
-        listupText.classList.add("article_content");
-        return listupText;
-      }
-      
-      function createInput(id, type, value, placeholder) {
-        const input = document.createElement("input");
-        input.id = id;
-        input.type = type;
-        input.value = value;
-        input.placeholder = placeholder;
-        return input;
-      }
-
-      function createButton(id, type, value) {
-        const button = document.createElement("input");
-        button.id = id;
-        button.type = type;
-        button.value = value;
-        return button;
-      }
-
-      function deletePopup() {
-        let workIdx = <%= work_idx %>;
-        window.open("../action/popup_delete_action.jsp?work_idx=" + workIdx);
-      }
-
-      function modifyPopup() {
-        let workIdx = <%= work_idx %>;
-        window.open("../action/popup_modify_action.jsp?work_idx=" + workIdx);
-      }
 
       // 데이터를 반복하여 HTML 요소를 동적으로 생성
       for(let i = 0; i < listData.length; i++) {
         const article = document.createElement("article");
         const userName = '<%= userName %>';
-        article.classList.add(listData[i][0]);
+        article.classList.add(listData[i][1]);
+        article.id = listData[i][0];
         
-        const name = createContent("name", listData[i][0])
-        const startTime = createContent("start_time", listData[i][1]);
-        const endTime = createContent("end_time", listData[i][2]);
-        const content = createContent("content", listData[i][3]);
+        const name = createContent("name", listData[i][1])
+        const startTime = createContent("start_time", listData[i][2]);
+        const endTime = createContent("end_time", listData[i][3]);
+        const content = createContent("content", listData[i][4]);
 
         article.appendChild(name);
         article.appendChild(startTime);
@@ -144,8 +112,12 @@
           modifyBtn.addEventListener("click", modifyPopup);
           article.appendChild(btnContainer);
         }
-
         listup.appendChild(article);
+      }
+
+      function deletePopup() {
+        let workIdx = <%= work_idx %>;
+        window.open("../action/popup_delete_action.jsp?work_idx=" + workIdx);
       }
 
       const colorMap = {};

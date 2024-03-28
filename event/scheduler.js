@@ -2,6 +2,7 @@ function setPrevYear() {
   selectYear--;
   year.textContent = selectYear + "년";
   history.pushState(null, "", `scheduler.jsp?year=${selectYear}&month=${selectMonth}`);
+  // window.open("scheduler.jsp?year=" + selectYear + "&month=" + selectMonth, "_self");
   today();
   setCalenderList(selectYear, selectMonth); // 연도가 변경되면 해당 연도에 맞는 캘린더 리스트를 렌더링
 }
@@ -10,6 +11,7 @@ function setNextYear() {
   selectYear++;
   year.textContent = selectYear + "년";
   history.pushState(null, "", `scheduler.jsp?year=${selectYear}&month=${selectMonth}`);
+  // window.open("scheduler.jsp?year=" + selectYear + "&month=" + selectMonth, "_self");
   today();
   setCalenderList(selectYear, selectMonth); // 연도가 변경되면 해당 연도에 맞는 캘린더 리스트를 렌더링
 }
@@ -26,9 +28,10 @@ function setMonth() {
 
   month.addEventListener("change", (e) => {
     selectMonth = parseInt(e.target.value);
-    setCalenderList(selectYear, selectMonth); // 이벤트가 발생한 요소의 현재값을 함수에 넣음
     history.pushState(null, "", `scheduler.jsp?year=${selectYear}&month=${selectMonth}`);
+    // window.open("scheduler.jsp?year=" + selectYear + "&month=" + selectMonth, "_self");
     today();
+    setCalenderList(selectYear, selectMonth); // 이벤트가 발생한 요소의 현재값을 함수에 넣음
   });
 }
 
